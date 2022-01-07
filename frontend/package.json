@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/MBTINFT/mbtinft-frontend#readme",
   "dependencies": {
-    "express": "^4.17.2"
+    "express": "^4.17.2",
+    "nes.css": "^2.3.0"
   }
 }
