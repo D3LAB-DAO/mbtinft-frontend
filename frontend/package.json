@@ -1,0 +1,23 @@
+{
+  "name": "mbtinft-frontend",
+  "version": "1.0.0",
+  "description": "frontend of mbtinft.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MBTINFT/mbtinft-frontend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MBTINFT/mbtinft-frontend/issues"
+  },
+  "homepage": "https://github.com/MBTINFT/mbtinft-frontend#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
