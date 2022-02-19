@@ -124,7 +124,7 @@ blockquote {
 .nes-progress.is-reverse::-ms-fill {
   background-color: white;
   border: none;
-  
+}
 
 #nescss > .container {
   max-width: 980px;
