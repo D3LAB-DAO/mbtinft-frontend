@@ -16,39 +16,116 @@
   <body>
     <!-- Header -->
     <div class="sticky-top">
-      <!-- Nav -->
-      <nav class="navbar navbar-light bg-win95">
-        <div class="container-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation" style="border: none; outline: none; box-shadow:none;">
-            <a class="nes-btn h2"># MBTiNFT</a>
-          </button>
+      <div class="row" style="width:100%;">
+        <!-- Nav -->
+        <div class="col-md-10 col-sm-8 col-6" style="padding:0;">
+          <nav class="navbar navbar-light bg-win95" style="padding-left:0;">
+            <div class="container-fluid">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation" style="border: none; outline: none; box-shadow:none;">
+                <a class="nes-btn h2"># MBTiNFT</a>
+              </button>
+            </div>
+          </nav>
         </div>
-      </nav>
+        <div class="col-md-2 col-sm-4 col-6" style="padding:0;">
+          <div style="margin: 13px 20px 4px 4px;">
+            <a id="connectMetamaskButton" onclick="connectMetamask()" class="nes-btn h2" role="button" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Connect to metamask" style="width:100%;">
+              <span class="showMetamaskStatus btn-text">Connect</span>
+            </a>
+          </div>
+        </div>
+      </div>
 
       <!-- Menu -->
       <div class="collapse" id="navbarToggleExternalContent">
         <div class="list-group">
-          <a href="index.html" class="list-group-item list-group-item-action bg-win95" aria-current="true">
-            <span><u> > 튜토리얼</u></span>
+          <a onclick="movePage(0)" class="list-group-item list-group-item-action bg-win95" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false">
+            <span>💁‍♀️ 튜토리얼</span>
           </a>
-          <a href="pages/training.html" class="list-group-item list-group-item-action bg-win95">
-            <span> - 학습</span>
+          <a onclick="movePage(1)" class="list-group-item list-group-item-action bg-win95" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false">
+            <span> 👨‍💻 학습</span>
           </a>
-          <a href="pages/chatting.html" class="list-group-item list-group-item-action bg-win95">
-            <span> - 대화</span>
+          <a onclick="movePage(2)" class="list-group-item list-group-item-action bg-win95" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false">
+            <span> 💬 대화</span>
           </a>
         </div>
       </div>
     </div>
 
     <!-- Contents -->
-    <div class="nes-container bg-light with-title m-4">
-      <p class="title" style="font-size:2rem;"># 튜토리얼</p>
-      <h1>📺💁🏻‍♂️ 어쩔 MBTI~ 📺 💁🏻‍♀️ 저쩔 iNFT~</h1>
-      <p>응~ 너 MBTI뭐야?👌🏻 안물티비~안궁티비~뇌절티비~우짤래미~ 저짤래미~ 쿠쿠루삥뽕🕺🏻 지금 화났죠?🔥😛 개킹받죠? 죽이고 싶죠? 🤗어차피 내가 사는곳 모르죠? 응~못 죽이죠?👊🏻🤟🏻 어~또 빡치죠? 😌아무것도 모르죠? 아무것도 못하죠?😉 그냥 화났죠? 냬~알걨섑니댸👏🏻🙃🙃 아무도 안물 안궁~🤣 물어본 사람?🙋🏻‍♀️ 궁금한 사람?🙋🏻‍♂️ 응 근데 어쩔티비죠? 약올리죠? 응~ 어쩔 저쩔 안물 안궁😚✌🏻</p>
+    <!-- Start -->
+    <div id="startPage" style="display:block;">
+      <div class="nes-container bg-light with-title m-4">
+        <p class="title" style="font-size:2rem;"># 튜토리얼</p>
+        <blockquote>MBTI + intelligence + NFT = MBTiNFT</blockquote>
+        <p>
+        <h4>💁MBTI를 가진 나만의 칭구칭긔NFT를 만들어보세요</h4>
+        <h4>👨‍💻데이터를 통해 NFT를 학습시켜보세요</h4>
+        <h4>💬학습된 NFT와 대화해보세요</h4>
+        </p>
+        <center><button type="button" class="nes-btn is-success" style="font-size:1.5rem; width:50%;">Start!</button></center>
+      </div>
+    </div>
+
+    <!-- Training -->
+    <div id="trainingPage" style="display:none;">
+      <div class="nes-container bg-light with-title m-4">
+        <p class="title" style="font-size:2rem;"># 학습</p>
+        <h1>응 학습중~</h1>
+        <progress class="nes-progress" value="90" max="100"></progress>
+      </div>
+    </div>
+
+    <!-- Chatting -->
+    <div id="chattingPage" style="display:none;">
+      <div class="nes-container bg-light with-title m-4">
+        <p class="title" style="font-size:2rem;"># 대화</p>
+          <section class="message-list">
+            <section class="message -left">
+              <i><img src="../src/enfp.png" style="width:100px; height:100px;"></i>
+              <!-- Balloon -->
+              <div class="nes-balloon from-left">
+                <p>응~ 너 MBTI뭐야?👌🏻</p>
+              </div>
+            </section>
+        
+            <section class="message -right">
+              <!-- Balloon -->
+              <div class="nes-balloon from-right">
+                <p>안물티비~안궁티비~뇌절티비~우짤래미~ 저짤래미~ 쿠쿠루삥뽕🕺🏻 지금 화났죠?🔥😛 개킹받죠? 죽이고 싶죠? 🤗어차피 내가 사는곳 모르죠? 응~못 죽이죠?👊🏻🤟🏻 어~또 빡치죠? 😌아무것도 모르죠? 아무것도 못하죠?😉 그냥 화났죠? 냬~알걨섑니댸👏🏻🙃🙃 아무도 안물 안궁~🤣 물어본 사람?🙋🏻‍♀️ 궁금한 사람?🙋🏻‍♂️ 응 근데 어쩔티비죠? 약올리죠? 응~ 어쩔 저쩔 안물 안궁😚✌🏻</p>
+              </div>
+              <i><img src="../src/intp.png" style="width:100px; height:100px;"></i>
+            </section>
+          </section>
+  
+          <div>
+            <label for="name_field">잼민이:</label>
+            <div class="input-group nes-field">
+              <div class="col-sm-10 px-1">
+                <input type="text" id="name_field" class="form-control nes-input" style="font-size:2rem;">
+              </div>
+              <div class="col-sm-2" style="text-align:right;">
+                <button type="button" class="btn nes-btn is-success" style="font-size:2rem; width:90%;" onclick="document.getElementById('dialog-rounded').showModal();">전송</button>
+                <dialog class="nes-dialog is-rounded" id="dialog-rounded" style="text-align:center;">
+                  <form method="dialog">
+                    <div>
+                      <p>아직 구현 안됐지롱😛</p>
+                    </div>
+                    <div>
+                      <button class="nes-btn">응아니야</button>
+                      <button class="nes-btn is-primary">확인~</button>
+                    </div>
+                  </form>
+                </dialog>
+              </div>
+            </div>
+          </div>
+      </div>
     </div>
 
     <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="../js/function.js"></script>
   </body>
 </html>
