@@ -85,38 +85,19 @@
               <i><img src="../src/enfp.png" style="width:100px; height:100px;"></i>
               <!-- Balloon -->
               <div class="nes-balloon from-left">
-                <p>응~ 너 MBTI뭐야?👌🏻</p>
+                <p>안녕 난 enfp야</p>
               </div>
-            </section>
-        
-            <section class="message -right">
-              <!-- Balloon -->
-              <div class="nes-balloon from-right">
-                <p>안물티비~안궁티비~뇌절티비~우짤래미~ 저짤래미~ 쿠쿠루삥뽕🕺🏻 지금 화났죠?🔥😛 개킹받죠? 죽이고 싶죠? 🤗어차피 내가 사는곳 모르죠? 응~못 죽이죠?👊🏻🤟🏻 어~또 빡치죠? 😌아무것도 모르죠? 아무것도 못하죠?😉 그냥 화났죠? 냬~알걨섑니댸👏🏻🙃🙃 아무도 안물 안궁~🤣 물어본 사람?🙋🏻‍♀️ 궁금한 사람?🙋🏻‍♂️ 응 근데 어쩔티비죠? 약올리죠? 응~ 어쩔 저쩔 안물 안궁😚✌🏻</p>
-              </div>
-              <i><img src="../src/intp.png" style="width:100px; height:100px;"></i>
             </section>
           </section>
-  
+
+          <hr style="color:transparent;">
           <div>
-            <label for="name_field">잼민이:</label>
             <div class="input-group nes-field">
               <div class="col-sm-10 px-1">
-                <input type="text" id="name_field" class="form-control nes-input" style="font-size:2rem;">
+                <input type="text" id="message_field" class="form-control nes-input" onKeypress="javascript:if(event.keyCode==13) {sendMessage()}" style="font-size:2rem;">
               </div>
               <div class="col-sm-2" style="text-align:right;">
-                <button type="button" class="btn nes-btn is-success" style="font-size:2rem; width:90%;" onclick="document.getElementById('dialog-rounded').showModal();">전송</button>
-                <dialog class="nes-dialog is-rounded" id="dialog-rounded" style="text-align:center;">
-                  <form method="dialog">
-                    <div>
-                      <p>아직 구현 안됐지롱😛</p>
-                    </div>
-                    <div>
-                      <button class="nes-btn">응아니야</button>
-                      <button class="nes-btn is-primary">확인~</button>
-                    </div>
-                  </form>
-                </dialog>
+                <button type="button" class="btn nes-btn is-success" style="font-size:2rem; width:90%;" onclick="sendMessage()">전송</button>
               </div>
             </div>
           </div>

@@ -4,12 +4,13 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 })
 
 const PAGES = ['startPage', 'trainingPage', 'chattingPage'];
+var account = '';
 
 async function connectMetamask() {
   if (typeof window.ethereum !== 'undefined') {
     // Metamask installed
     const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-    const account = accounts[0];
+    account = accounts[0];
     $('.showMetamaskStatus').html(account.substr(0, 4) + '..' + account.substr(account.length-2, 2));
     $('#connectMetamaskButton').attr('data-bs-original-title', account).tooltip('show');
   } else {
@@ -25,4 +26,19 @@ function movePage(targetIdx) {
     if ( idx == targetIdx ) $('#'+PAGES[idx]).show();
     else $('#'+PAGES[idx]).hide();
   }
+}
+
+function sendMessage() {
+    var message = $('input#message_field').val();
+    var message_html = `
+    <section class="message -right">
+        <div class="nes-balloon from-right">
+            <p>` + message + `</p>
+        </div>
+        <i><img src="../src/intp.png" style="width:100px; height:100px;"></i>
+    </section>
+    `;
+    $(".message-list").append(message_html);
+    $('input#message_field').val('');
+    window.scrollTo(0,document.body.scrollHeight);
 }
