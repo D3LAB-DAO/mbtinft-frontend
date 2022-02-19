@@ -9,6 +9,11 @@
 
 :root {
   --main-color: #018281;
+  --primary-color: #209cee;
+  --success-color: #92cc41;
+  --warning-color: #f7d51d;
+  --error-color: #e76e55;
+  --gray-color: #eeeeee;
 }
 
 body {
@@ -17,8 +22,22 @@ body {
   background-color: var(--main-color);
 }
 
+h4 {
+  line-height: 2rem;
+}
+
+hr {
+  color:#ffffff;
+  border-top:dashed 5px #eeeeee;
+  opacity: 0.8;
+}
+
 .row {
   background-color: var(--main-color);
+}
+
+.chat-balloon p, #message_field {
+  font-size: 1.5rem;
 }
 
 blockquote {
@@ -27,7 +46,7 @@ blockquote {
   padding-left: 20px;
   padding-right: 20px;
   border-left: 10px solid var(--main-color);
-  background-color: #eeeeee;
+  background-color: var(--gray-color);
 }
 
 .bg-win95 {
@@ -56,6 +75,20 @@ blockquote {
 
 .tooltip.show {
   opacity: 1;
+}
+
+.nes-progress:before {
+  content: attr(data-label);
+  font-size: 0.8em;
+  text-align: left;
+  padding-left: 50px;
+  vertical-align: 0;
+  color: var(--gray-color);
+  
+  /*Position text over the progress bar */
+  position:absolute;
+  left:0;
+  right:0;
 }
 
 #nescss > .container {
