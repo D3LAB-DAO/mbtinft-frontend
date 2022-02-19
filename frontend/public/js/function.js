@@ -61,6 +61,38 @@ function drawSpinner() {
     }
 }
 
+async function sendRequestAndDrawResponse(msg) {
+    let reply_message = await echo(msg);
+    console.log(reply_message);
+    var message_html = `
+    <section class="message -left">
+        <i><img src="../src/enfp.png" style="width:100px; height:100px;"></i>
+        <div class="nes-balloon from-left chat-balloon">
+            <p>` + reply_message + `</p>
+        </div>
+    </section>
+    `;
+    setLoadingStatus(false, false);
+    $(".message-list").append(message_html);
+    window.scrollTo(0,document.body.scrollHeight);
+   /*
+    sendInferenceReq(msg).done(function(reply_message){
+        console.log(reply_message);
+        var message_html = `
+        <section class="message -left">
+            <i><img src="../src/enfp.png" style="width:100px; height:100px;"></i>
+            <div class="nes-balloon from-left chat-balloon">
+                <p>` + reply_message + `</p>
+            </div>
+        </section>
+        `;
+        setLoadingStatus(false, false);
+        $(".message-list").append(message_html);
+        window.scrollTo(0,document.body.scrollHeight);
+    });
+    */
+}
+
 function sendMessage() {
     var message = $('input#message_field').val();
     var message_html = `
@@ -76,6 +108,6 @@ function sendMessage() {
     $("#message-status-text").text("");
     $('input#message_field').val('');
     window.scrollTo(0,document.body.scrollHeight);
-    echo(message);
     setLoadingStatus(false, true);
+    sendRequestAndDrawResponse(message);
 }
