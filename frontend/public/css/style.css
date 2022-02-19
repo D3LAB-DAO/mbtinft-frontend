@@ -29,8 +29,8 @@ h4 {
 
 hr {
   color:#ffffff;
-  border-top:dashed 5px #eeeeee;
-  opacity: 0.8;
+  border-top:dashed 5px #212529;
+  opacity: 1;
 }
 
 .row {
@@ -43,6 +43,24 @@ hr {
 
 .nav-connect {
   width: 170px;
+}
+
+.modal-content {
+  padding: 1.5rem 2rem;
+  border: 5px solid #000000;
+  border-radius: 0;
+}
+
+.modal-close {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+}
+
+.modal-close-text {
+  position: absolute;
+  top: -6px;
+  right: 14px;
 }
 
 .chat-balloon p, #message_field {
