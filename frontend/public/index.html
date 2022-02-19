@@ -16,21 +16,21 @@
   <body>
     <!-- Header -->
     <div class="sticky-top">
-      <div class="row" style="width:100%;">
+      <div class="row" style="width:100%; padding-top:20px;">
         <!-- Nav -->
-        <div class="col-md-10 col-sm-8 col-6" style="padding:0;">
+        <div class="nav-logo" style="padding:0;">
           <nav class="navbar navbar-light bg-win95" style="padding-left:0;">
             <div class="container-fluid">
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation" style="border: none; outline: none; box-shadow:none;">
-                <a class="nes-btn h2"># MBTiNFT</a>
+                <a class="nes-btn h2" style="font-family: 'Press Start 2P', cursive; font-size:1.5rem; color:black;"># MBTiNFT</a>
               </button>
             </div>
           </nav>
         </div>
-        <div class="col-md-2 col-sm-4 col-6" style="padding:0;">
+        <div class="nav-connect" style="padding:0;">
           <div style="margin: 13px 20px 4px 4px;">
-            <a id="connectMetamaskButton" onclick="connectMetamask()" class="nes-btn h2" role="button" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Connect to metamask" style="width:100%;">
-              <span class="showMetamaskStatus btn-text">Connect</span>
+            <a id="connectMetamaskButton" onclick="connectMetamask()" class="nes-btn h2" role="button" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Connect to metamask" style="width:100%; font-family: 'Press Start 2P', cursive; font-size:1.5rem;">
+              <span class="showMetamaskStatus btn-text" style="font-size:1rem;">Connect</span>
             </a>
           </div>
         </div>
@@ -71,30 +71,36 @@
     <div id="trainingPage" style="display:none; padding-bottom:20px;">
       <div class="nes-container bg-light with-title m-4">
         <p class="title" style="font-size:2rem;">💓 칭구</p>
-        <blockquote># 내 칭구</blockquote>
-        <div style="padding-bottom: 15px;">
-          <img src="../src/enfp.png" style="width:100px; height:100px;">
-          <div class="nes-balloon from-left">
-            <p>안녕 난 enfp야</p>
+        <blockquote data-bs-toggle="collapse" data-bs-target="#myfriend" aria-controls="myfriend" aria-expanded="true"># 내 칭구</blockquote>
+        <div class="collapse show" id="myfriend">
+          <div style="padding-bottom: 15px;">
+            <img src="../src/enfp.png" style="width:100px; height:100px;">
+            <div class="nes-balloon from-left">
+              <p>안녕 난 enfp야</p>
+            </div>
           </div>
         </div>
-        <blockquote># 학습 정도</blockquote>
-        <p><h4>내 칭구가 이만큼 학습했어요.</h4></p>
-        <i class="nes-icon is-large heart"></i>
-        <i class="nes-icon is-large heart"></i>
-        <i class="nes-icon is-large heart"></i>
-        <i class="nes-icon is-large is-half heart"></i>
-        <i class="nes-icon is-large is-transparent heart"></i>
-        <blockquote># 성향</blockquote>
-        <p><h4>내 칭구는 현재 ENFP 성향에 가까워요.</h4></p>
-        <h5>• 외향형(E) / 내향형(I)</h5>
-        <progress class="nes-progress is-primary" value="80" max="100" data-label="80%"></progress>
-        <h5>• 직관형(N) / 감각형(S)</h5>
-        <progress class="nes-progress is-success" value="70" max="100" data-label="70%"></progress>
-        <h5>• 사고형(T) / 감정형(F)</h5>
-        <progress class="nes-progress is-reverse is-reverse-warning" value="45" max="100" data-label="55%"></progress>
-        <h5>• 판단형(J) / 인지형(P)</h5>
-        <progress class="nes-progress is-reverse is-reverse-error" value="30" max="100" data-label="70%"></progress>
+        <blockquote data-bs-toggle="collapse" data-bs-target="#myeducation" aria-controls="myeducation" aria-expanded="true"># 학습 정도</blockquote>
+        <div class="collapse show" id="myeducation">
+          <p><h4>내 칭구가 이만큼 학습했어요.</h4></p>
+          <i class="nes-icon is-large heart"></i>
+          <i class="nes-icon is-large heart"></i>
+          <i class="nes-icon is-large heart"></i>
+          <i class="nes-icon is-large is-half heart"></i>
+          <i class="nes-icon is-large is-transparent heart"></i>
+        </div>
+        <blockquote data-bs-toggle="collapse" data-bs-target="#mymbti" aria-controls="mymbti" aria-expanded="true"># 성향</blockquote>
+        <div class="collapse show" id="mymbti">
+          <p><h4>내 칭구는 현재 ENFP 성향에 가까워요.</h4></p>
+          <h5>• 외향형(E) / 내향형(I)</h5>
+          <progress class="nes-progress is-primary" value="80" max="100" data-label="80%"></progress>
+          <h5>• 직관형(N) / 감각형(S)</h5>
+          <progress class="nes-progress is-success" value="70" max="100" data-label="70%"></progress>
+          <h5>• 사고형(T) / 감정형(F)</h5>
+          <progress class="nes-progress is-reverse is-reverse-warning" value="45" max="100" data-label="55%"></progress>
+          <h5>• 판단형(J) / 인지형(P)</h5>
+          <progress class="nes-progress is-reverse is-reverse-error" value="30" max="100" data-label="70%"></progress>
+        </div>
         <div style="padding-top:10px;">
           <center><button type="button" onclick="mintNFT()" class="nes-btn is-success" style="font-size:1.5rem; width:200px;">✏️학습하기!</button></center>
         </div>

@@ -37,6 +37,14 @@ hr {
   background-color: var(--main-color);
 }
 
+.nav-logo {
+  width: calc(100% - 170px);
+}
+
+.nav-connect {
+  width: 170px;
+}
+
 .chat-balloon p, #message_field {
   font-size: 1.5rem;
 }
@@ -46,8 +54,12 @@ blockquote {
   margin-right: 0px;
   padding-left: 20px;
   padding-right: 20px;
-  border-left: 10px solid var(--main-color);
+  border-left: 10px solid var(--dark-color);
   background-color: var(--gray-color);
+}
+
+blockquote:hover {
+  border-left: 10px solid var(--main-color);
 }
 
 .bg-win95 {
@@ -76,6 +88,10 @@ blockquote {
 
 .tooltip.show {
   opacity: 1;
+}
+
+.nes-progress:hover {
+  background-color: gold;
 }
 
 .nes-progress:before {
