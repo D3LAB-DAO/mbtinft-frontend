@@ -14,6 +14,7 @@
   --warning-color: #f7d51d;
   --error-color: #e76e55;
   --gray-color: #eeeeee;
+  --dark-color: #212529;
 }
 
 body {
@@ -90,6 +91,40 @@ blockquote {
   left:0;
   right:0;
 }
+
+.nes-progress.is-primary::-webkit-progress-bar, .nes-progress.is-success::-webkit-progress-bar {
+  background-color: var(--gray-color);
+}
+
+.is-reverse.nes-progress:before {
+  text-align: right;
+  padding-right: 50px;
+}
+
+.nes-progress.is-reverse::-webkit-progress-bar {
+  background-color: var(--dark-color);
+}
+
+.nes-progress.is-reverse-warning::-webkit-progress-bar {
+  background-color: var(--warning-color);
+}
+
+.nes-progress.is-reverse-error::-webkit-progress-bar {
+  background-color: var(--error-color);
+}
+
+.nes-progress.is-reverse::-webkit-progress-value {
+  background-color: var(--gray-color);
+}
+
+.nes-progress.is-reverse::-moz-progress-bar {
+  background-color: white;
+}
+
+.nes-progress.is-reverse::-ms-fill {
+  background-color: white;
+  border: none;
+  
 
 #nescss > .container {
   max-width: 980px;
