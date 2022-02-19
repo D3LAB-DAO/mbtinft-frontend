@@ -1,5 +1,18 @@
-const CONTRACT_ADDR = '0x752BF20d9bbFc3A9cb389857f3A5061bD9fe9a53';
+const CONTRACT_ADDR = '0xbC8329e74De0Ee0A91f05aEc7387eEe27Fc09235';
 const CONTRACT_ABI = [
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "_echo",
+				"type": "string"
+			}
+		],
+		"name": "Echo",
+		"type": "event"
+	},
 	{
 		"inputs": [
 			{
@@ -16,7 +29,7 @@ const CONTRACT_ABI = [
 				"type": "string"
 			}
 		],
-		"stateMutability": "pure",
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{

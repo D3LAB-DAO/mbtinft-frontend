@@ -116,9 +116,10 @@
         </section>
         
         <div style="padding-top: 30px;">
+          <div><h6 id="message-status-text" style="color:gray; padding-left:10px;"></h6></div>
           <div class="input-group nes-field">
             <div class="col-sm-10 px-1">
-              <input type="text" id="message_field" class="form-control nes-input" onKeypress="javascript:if(event.keyCode==13) {sendMessage()}">
+              <input type="text" id="message_field" class="form-control nes-input" onKeypress="javascript:if(event.keyCode==13) {sendMessage()}" oninput="drawSpinner()">
             </div>
             <div class="col-sm-2" style="text-align:right;">
               <button type="button" class="btn nes-btn is-success" style="font-size:1.7rem; width:90%;" onclick="sendMessage()">전송</button>
@@ -134,6 +135,7 @@
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
     <script src="../js/contract.js"></script>
     <script src="../js/request.js"></script>
+    <script src="../js/handler.js"></script>
     <script src="../js/function.js"></script>
   </body>
 </html>
