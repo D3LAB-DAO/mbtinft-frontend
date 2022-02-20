@@ -45,6 +45,30 @@ hr {
   opacity: 1;
 }
 
+.set-like {
+  position: absolute;
+  bottom: -25px;
+  right: -30px;
+  visibility: hidden;
+}
+
+/* Change balloon background color on hover */
+.message.-left .nes-balloon:hover, .message.-left .nes-balloon:hover:before, .message.-left .nes-balloon:hover:after {
+  background-color: var(--gray-color);
+}
+
+.message.-left .nes-balloon:hover:after {
+  box-shadow: -4px 0, 4px 0, -4px 4px var(--gray-color), 0 4px, -8px 4px, -4px 8px, -8px 8px;
+}
+
+.message.-right .nes-balloon:hover, .message.-right .nes-balloon:hover:before, .message.-right .nes-balloon:hover:after {
+  background-color: var(--gray-color);
+}
+
+.message.-right .nes-balloon:hover:after {
+  box-shadow: -4px 0, 4px 0, -4px 4px var(--gray-color), 0 4px, -8px 4px, -4px 8px, -8px 8px;
+}
+
 .educated-degree {
   font-family: 'Press Start 2P';
 }
@@ -97,6 +121,10 @@ hr {
 
 .chat-balloon p, #message_field {
   font-size: 1.5rem;
+}
+
+.chat-balloon p {
+  margin-bottom: 0;
 }
 
 blockquote {

@@ -82,8 +82,9 @@ async function sendRequestAndDrawResponse(msg) {
     var message_html = `
     <section class="message -left">
         <i><img src="../src/enfp.png" style="width:100px; height:100px;"></i>
-        <div class="nes-balloon from-left chat-balloon">
+        <div class="nes-balloon from-left chat-balloon left-balloon" data-bs-toggle="modal" data-bs-target="#like-modal">
             <p>` + reply_message + `</p>
+            <i class="nes-icon is-medium heart set-like"></i>
         </div>
     </section>
     `;
@@ -96,8 +97,9 @@ async function sendRequestAndDrawResponse(msg) {
         var message_html = `
         <section class="message -left">
             <i><img src="../src/enfp.png" style="width:100px; height:100px;"></i>
-            <div class="nes-balloon from-left chat-balloon">
+            <div class="nes-balloon from-left chat-balloon left-balloon" data-bs-toggle="modal" data-bs-target="#like-modal">
                 <p>` + reply_message + `</p>
+                <i class="nes-icon is-medium heart set-like"></i>
             </div>
         </section>
         `;

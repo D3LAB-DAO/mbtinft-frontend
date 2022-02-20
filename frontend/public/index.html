@@ -184,8 +184,9 @@
         <section class="message -left">
           <i><img src="../src/enfp.png" style="width:100px; height:100px;"></i>
           <!-- Balloon -->
-          <div class="nes-balloon from-left chat-balloon">
+          <div class="nes-balloon from-left chat-balloon left-balloon" data-bs-toggle="modal" data-bs-target="#like-modal">
             <p>안녕 난 enfp야</p>
+            <i class="nes-icon is-medium heart set-like"></i>
           </div>
         </section>
       </section>
@@ -250,6 +251,22 @@
         </div>
       </div>
     </div>
+    <!-- Like message -->
+    <div class="modal fade" id="like-modal" tabindex="-1" aria-labelledby="likeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <button type="button" class="nes-btn is-error modal-close" data-bs-dismiss="modal" aria-label="Close"
+            style="width:50px; height:50px; padding-bottom:20px; margin-bottom:20px;">
+            <div class="modal-close-text">X</div>
+          </button>
+          <div style="font-size:1rem;">
+            <h4># 칭구 어록 등록</h4>
+            <hr />
+            칭구의 메세지를 어록으로 등록해 프로필에서 확인할 수 있습니다. 현재는 지원하지 않고 있습니다.😅
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Connect to Wallet -->
@@ -271,6 +288,7 @@
   <script src="../js/contract.js"></script>
   <script src="../js/request.js"></script>
   <script src="../js/function.js"></script>
+  <script src="../js/handler.js"></script>
 </body>
 
 </html>
