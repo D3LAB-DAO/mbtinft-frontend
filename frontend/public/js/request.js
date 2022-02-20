@@ -9,7 +9,7 @@ async function connectMetamask() {
     account = accounts[0];
     $('.showMetamaskStatus').html(account.substr(0, 4) + '..' + account.substr(account.length-2, 2));
     $('#connectMetamaskButton').attr('data-bs-original-title', account).tooltip('show');
-    console.log(window.contract)
+    console.log(window.contract);
   } else {
     // Metamask not installed
     $('.showMetamaskStatus').html("Error!");

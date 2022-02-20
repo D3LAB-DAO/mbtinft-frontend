@@ -1,220 +1,274 @@
 <!doctype html>
 <html lang="en" class="h-100">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <title>💓칭구 MBTiNFT💓</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link href="css/bootstrap386.css" rel="stylesheet" />
-    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>💓칭구 MBTiNFT💓</title>
 
-    <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet" />
-  </head>
-  <body>
-    <!-- Header -->
-    <div class="sticky-top">
-      <div class="row nav-row" style="width:100%; padding-top:20px;">
-        <!-- Nav -->
-        <div class="nav-logo" style="padding:0;">
-          <nav class="navbar navbar-light bg-win95" style="padding-left:0;">
-            <div class="container-fluid">
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation" style="border: none; outline: none; box-shadow:none;">
-                <a class="nes-btn h2" style="font-family: 'Press Start 2P', cursive; font-size:1.5rem; color:black;"># MBTiNFT</a>
-              </button>
-            </div>
-          </nav>
-        </div>
-        <div class="nav-connect" style="padding:0;">
-          <div style="margin: 13px 20px 4px 4px;">
-            <a id="connectMetamaskButton" onclick="connectMetamask()" class="nes-btn h2" role="button" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Connect to metamask" style="width:100%; font-family: 'Press Start 2P', cursive; font-size:1.5rem;">
-              <span class="showMetamaskStatus btn-text" style="font-size:1rem;">Connect</span>
-            </a>
-          </div>
-        </div>
-      </div>
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link href="css/bootstrap386.css" rel="stylesheet" />
+  <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
 
-      <!-- Menu -->
-      <div class="collapse" id="navbarToggleExternalContent">
-        <div class="list-group">
-          <a onclick="movePage(0)" class="list-group-item list-group-item-action bg-win95" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false">
-            <span> 📃 튜토리얼</span>
-          </a>
-          <a onclick="movePage(1)" class="list-group-item list-group-item-action bg-win95" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false">
-            <span> 💓 칭구</span>
-          </a>
-          <a onclick="movePage(2)" class="list-group-item list-group-item-action bg-win95" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false">
-            <span> 💬 대화</span>
-          </a>
-        </div>
-      </div>
-    </div>
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+</head>
 
-    <!-- Contents -->
-    <!-- Start -->
-    <div id="startPage" style="display:block; padding-bottom:20px;">
-      <div class="nes-container bg-light with-title m-4">
-        <p class="title" style="font-size:2rem;">📃 튜토리얼</p>
-        <blockquote>MBTI + intelligence + NFT = MBTiNFT</blockquote>
-        <p>
-        <h4>💓MBTI를 가진 나만의 칭구NFT를 만들어보세요</h4>
-        <h4>✏️데이터를 통해 칭구를 학습시켜보세요</h4>
-        <h4>💬학습된 칭구와 대화해보세요</h4>
-        </p>
-        <center><button type="button" onclick="mintNFT()" class="nes-btn is-success" style="font-size:1.5rem; width:50%;">💌칭구만들기!</button></center>
-      </div>
-    </div>
-
-    <!-- Training -->
-    <div id="trainingPage" style="display:none; padding-bottom:20px;">
-      <div class="nes-container bg-light with-title m-4">
-        <p class="title" style="font-size:2rem;">💓 칭구</p>
-        <blockquote data-bs-toggle="collapse" data-bs-target="#myfriend" aria-controls="myfriend" aria-expanded="true"># 내 칭구</blockquote>
-        <div class="collapse show" id="myfriend">
-          <div style="padding-bottom: 15px;">
-            <img src="../src/enfp.png" style="width:100px; height:100px;">
-            <div class="nes-balloon from-left">
-              <p>안녕 난 enfp야</p>
-            </div>
-          </div>
-        </div>
-        <blockquote data-bs-toggle="collapse" data-bs-target="#myeducation" aria-controls="myeducation" aria-expanded="true"># 능력치</blockquote>
-        <div class="collapse show" id="myeducation">
-          <p><h4>내 칭구가 이만큼 성장했어요.</h4></p>
-          <div class="row">
-            <div class="col-12 col-xl-4 friend-stat">
-              <blockquote class="sub-blockquote" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="친밀도는 칭구와 대화를 할수록 올라가요!">친밀도</blockquote>
-              <i class="nes-icon is-large heart"></i>
-              <i class="nes-icon is-large heart"></i>
-              <i class="nes-icon is-large heart"></i>
-              <i class="nes-icon is-large is-half heart"></i>
-              <i class="nes-icon is-large is-transparent heart"></i>
-            </div>
-            <div class="col-12 col-xl-4 friend-stat">
-              <blockquote class="sub-blockquote" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="학습도는 데이터를 통해 칭구를 학습시켰을 때 올라가요!">학습도</blockquote>
-              <i class="nes-icon is-large star"></i>
-              <i class="nes-icon is-large star"></i>
-              <i class="nes-icon is-large star is-transparent"></i>
-              <i class="nes-icon is-large star is-transparent"></i>
-              <i class="nes-icon is-large star is-transparent"></i>
-            </div>
-            <div class="col-12 col-xl-4 friend-stat">
-              <blockquote class="sub-blockquote" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="인기도는 다른 칭구가 좋아요를 누르면 올라가요!">인기도</blockquote>
-              <i class="nes-icon is-large like"></i>
-              <i class="nes-icon is-large like"></i>
-              <i class="nes-icon is-large like"></i>
-              <i class="nes-icon is-large like is-empty"></i>
-              <i class="nes-icon is-large like is-empty"></i>
-            </div>
-          </div>
-        </div>
-        <blockquote data-bs-toggle="collapse" data-bs-target="#mymbti" aria-controls="mymbti" aria-expanded="true"># 성향</blockquote>
-        <div class="collapse show" id="mymbti">
-          <p><h4>내 칭구는 현재 ENFP 성향에 가까워요.</h4></p>
-          <h5>• 외향형(E) / 내향형(I)</h5>
-          <progress class="nes-progress is-primary" value="80" max="100" data-label="80%" data-bs-toggle="modal" data-bs-target="#mymbti-modal"></progress>
-          <h5>• 직관형(N) / 감각형(S)</h5>
-          <progress class="nes-progress is-success" value="70" max="100" data-label="70%"></progress>
-          <h5>• 사고형(T) / 감정형(F)</h5>
-          <progress class="nes-progress is-reverse is-reverse-warning" value="45" max="100" data-label="55%"></progress>
-          <h5>• 판단형(J) / 인지형(P)</h5>
-          <progress class="nes-progress is-reverse is-reverse-error" value="30" max="100" data-label="70%"></progress>
-          <!-- Modal -->
-          <div class="modal fade" id="mymbti-modal" tabindex="-1" aria-labelledby="mymbtiModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <button type="button" class="nes-btn is-error modal-close" data-bs-dismiss="modal" aria-label="Close" style="width:50px; height:50px; padding-bottom:20px; margin-bottom:20px;">
-                  <div class="modal-close-text">X</div>
-                </button>
-                <div style="font-size:1rem;">
-                  <h4># 에너지 방향, 주의초점</h4>
-                  <hr/>
-                  외향형(Extraversion) 성향이 높아요!<br/>
-                  외향형 성향은 폭넓은 대인관계 유지, 사교적, 정열적, 활동적이라는 특징을 갖고 있어요.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div style="padding-top:10px;">
-          <center><button type="button" onclick="mintNFT()" class="nes-btn is-success" style="font-size:1.5rem; width:200px;">✏️학습하기!</button></center>
-        </div>
-      </div>
-    </div>
-
-    <!-- Chatting -->
-    <div id="chattingPage" style="display:none; padding-bottom:20px;">
-      <div class="nes-container bg-light with-title m-4">
-        <p class="title" style="font-size:2rem;">💬 대화</p>
-        <section class="message-list">
-          <section class="message -left">
-            <i><img src="../src/enfp.png" style="width:100px; height:100px;"></i>
-            <!-- Balloon -->
-            <div class="nes-balloon from-left chat-balloon">
-              <p>안녕 난 enfp야</p>
-            </div>
-          </section>
-        </section>
-        
-        <div style="padding-top: 30px;">
-          <div><h6 id="message-status-text" style="color:gray; padding-left:10px;"></h6></div>
-          <div class="input-group nes-field">
-            <div class="chatting-element">
-              <div class="nes-select" style="font-size:1.5rem; width:90%;">
-                <select required id="message_select">
-                  <option value="0">채팅</option>
-                  <option value="1">삼행시</option>
-                  <option value="2">작문</option>
-                  <option value="3">Q&A</option>
-                </select>
-              </div>
-            </div>
-            <div class="px-1 chatting-field">
-              <input type="text" id="message_field" class="form-control nes-input" onKeypress="javascript:if(event.keyCode==13) {sendMessage()}" oninput="drawSpinner()">
-            </div>
-            <div class="chatting-config-icon">
-              <button type="button" class="btn nes-btn is-primary" style="font-size:1.7rem; width:90%;" data-bs-toggle="modal" data-bs-target="#config-modal" onclick="openConfig()">⚙️</button>
-            </div>
-            <div class="chatting-element" style="text-align:right;">
-              <button type="button" class="btn nes-btn is-success" style="font-size:1.7rem; width:90%;" onclick="sendMessage()">전송</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Config -->
-      <div class="modal fade" id="config-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="configModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <button type="button" class="nes-btn is-error modal-close" data-bs-dismiss="modal" aria-label="Close" style="width:50px; height:50px; padding-bottom:20px; margin-bottom:20px;">
-              <div class="modal-close-text">X</div>
+<body>
+  <!-- Header -->
+  <div class="sticky-top">
+    <div class="row nav-row" style="width:100%; padding-top:20px;">
+      <!-- Nav -->
+      <div class="nav-logo" style="padding:0;">
+        <nav class="navbar navbar-light bg-win95" style="padding-left:0;">
+          <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+              aria-expanded="false" aria-label="Toggle navigation"
+              style="border: none; outline: none; box-shadow:none;">
+              <a class="nes-btn h2" style="font-family: 'Press Start 2P', cursive; font-size:1.5rem; color:black;">#
+                MBTiNFT</a>
             </button>
-            <div style="font-size:1rem;">
-              <h4># 환경설정</h4>
-              <hr/>
-              <label for="response_length_field">• Response Length :</label>
-              <input type="number" id="response_length_field" class="form-control nes-input" min="1" max="1024" value="128" placeholder="128" style="margin-bottom:10px;">
-              <label for="temperature_field">• Temperature :</label>
-              <input type="number" id="temperature_field" class="form-control nes-input" min="0" max="1" step="0.1" value="0.8" placeholder="0.8">
-              <div style="text-align: center;">
-                <button type="button" class="btn nes-btn is-primary" style="font-size:1.3rem; width:100px; margin-top: 20px; margin-right: 10px;" data-bs-dismiss="modal" aria-label="Close" onclick="saveConfig()">저장</button>
-                <button type="button" class="btn nes-btn is-error" style="font-size:1.3rem; width:100px; margin-top: 20px; margin-left: 10px;" data-bs-dismiss="modal" aria-label="Close">취소</button>
+          </div>
+        </nav>
+      </div>
+      <div class="nav-connect" style="padding:0;">
+        <div style="margin: 13px 20px 4px 4px;">
+          <a id="connectMetamaskButton" onclick="connect()" class="nes-btn h2" role="button"
+            data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Connect to metamask"
+            style="width:100%; font-family: 'Press Start 2P', cursive; font-size:1.5rem;">
+            <span class="showMetamaskStatus btn-text" style="font-size:1rem;">Connect</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Menu -->
+    <div class="collapse" id="navbarToggleExternalContent">
+      <div class="list-group">
+        <a onclick="movePage(0)" class="list-group-item list-group-item-action bg-win95" type="button"
+          data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent"
+          aria-controls="navbarToggleExternalContent" aria-expanded="false">
+          <span> 📃 튜토리얼</span>
+        </a>
+        <a onclick="movePage(1)" class="list-group-item list-group-item-action bg-win95" type="button"
+          data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent"
+          aria-controls="navbarToggleExternalContent" aria-expanded="false">
+          <span> 💓 칭구</span>
+        </a>
+        <a onclick="movePage(2)" class="list-group-item list-group-item-action bg-win95" type="button"
+          data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent"
+          aria-controls="navbarToggleExternalContent" aria-expanded="false">
+          <span> 💬 대화</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contents -->
+  <!-- Start -->
+  <div id="startPage" style="display:block; padding-bottom:20px;">
+    <div class="nes-container bg-light with-title m-4">
+      <p class="title" style="font-size:2rem;">📃 튜토리얼</p>
+      <blockquote>MBTI + intelligence + NFT = MBTiNFT</blockquote>
+      <p>
+      <h4>💓MBTI를 가진 나만의 칭구NFT를 만들어보세요</h4>
+      <h4>✏️데이터를 통해 칭구를 학습시켜보세요</h4>
+      <h4>💬학습된 칭구와 대화해보세요</h4>
+      </p>
+      <center><button type="button" onclick="mintNFT()" class="nes-btn is-success"
+          style="font-size:1.5rem; width:50%;">💌칭구만들기!</button></center>
+    </div>
+  </div>
+
+  <!-- Training -->
+  <div id="trainingPage" style="display:none; padding-bottom:20px;">
+    <div class="nes-container bg-light with-title m-4">
+      <p class="title" style="font-size:2rem;">💓 칭구</p>
+      <blockquote data-bs-toggle="collapse" data-bs-target="#myfriend" aria-controls="myfriend" aria-expanded="true"># 내
+        칭구</blockquote>
+      <div class="collapse show" id="myfriend">
+        <div style="padding-bottom: 15px;">
+          <img src="../src/enfp.png" style="width:100px; height:100px;">
+          <div class="nes-balloon from-left">
+            <p>안녕 난 enfp야</p>
+          </div>
+        </div>
+      </div>
+      <blockquote data-bs-toggle="collapse" data-bs-target="#myeducation" aria-controls="myeducation"
+        aria-expanded="true"># 능력치</blockquote>
+      <div class="collapse show" id="myeducation">
+        <p>
+        <h4>내 칭구가 이만큼 성장했어요.</h4>
+        </p>
+        <div class="row">
+          <div class="col-12 col-xl-4 friend-stat">
+            <blockquote class="sub-blockquote" data-bs-toggle="tooltip" data-bs-placement="right"
+              data-bs-original-title="친밀도는 칭구와 대화를 할수록 올라가요!">친밀도</blockquote>
+            <i class="nes-icon is-large heart"></i>
+            <i class="nes-icon is-large heart"></i>
+            <i class="nes-icon is-large heart"></i>
+            <i class="nes-icon is-large is-half heart"></i>
+            <i class="nes-icon is-large is-transparent heart"></i>
+          </div>
+          <div class="col-12 col-xl-4 friend-stat">
+            <blockquote class="sub-blockquote" data-bs-toggle="tooltip" data-bs-placement="right"
+              data-bs-original-title="학습도는 데이터를 통해 칭구를 학습시켰을 때 올라가요!">학습도</blockquote>
+            <i class="nes-icon is-large star"></i>
+            <i class="nes-icon is-large star"></i>
+            <i class="nes-icon is-large star is-transparent"></i>
+            <i class="nes-icon is-large star is-transparent"></i>
+            <i class="nes-icon is-large star is-transparent"></i>
+          </div>
+          <div class="col-12 col-xl-4 friend-stat">
+            <blockquote class="sub-blockquote" data-bs-toggle="tooltip" data-bs-placement="right"
+              data-bs-original-title="인기도는 다른 칭구가 좋아요를 누르면 올라가요!">인기도</blockquote>
+            <i class="nes-icon is-large like"></i>
+            <i class="nes-icon is-large like"></i>
+            <i class="nes-icon is-large like"></i>
+            <i class="nes-icon is-large like is-empty"></i>
+            <i class="nes-icon is-large like is-empty"></i>
+          </div>
+        </div>
+      </div>
+      <blockquote data-bs-toggle="collapse" data-bs-target="#mymbti" aria-controls="mymbti" aria-expanded="true"># 성향
+      </blockquote>
+      <div class="collapse show" id="mymbti">
+        <p>
+        <h4>내 칭구는 현재 ENFP 성향에 가까워요.</h4>
+        </p>
+        <h5>• 외향형(E) / 내향형(I)</h5>
+        <progress class="nes-progress is-primary" value="80" max="100" data-label="80%" data-bs-toggle="modal"
+          data-bs-target="#mymbti-modal"></progress>
+        <h5>• 직관형(N) / 감각형(S)</h5>
+        <progress class="nes-progress is-success" value="70" max="100" data-label="70%"></progress>
+        <h5>• 사고형(T) / 감정형(F)</h5>
+        <progress class="nes-progress is-reverse is-reverse-warning" value="45" max="100" data-label="55%"></progress>
+        <h5>• 판단형(J) / 인지형(P)</h5>
+        <progress class="nes-progress is-reverse is-reverse-error" value="30" max="100" data-label="70%"></progress>
+        <!-- Modal -->
+        <div class="modal fade" id="mymbti-modal" tabindex="-1" aria-labelledby="mymbtiModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <button type="button" class="nes-btn is-error modal-close" data-bs-dismiss="modal" aria-label="Close"
+                style="width:50px; height:50px; padding-bottom:20px; margin-bottom:20px;">
+                <div class="modal-close-text">X</div>
+              </button>
+              <div style="font-size:1rem;">
+                <h4># 에너지 방향, 주의초점</h4>
+                <hr />
+                외향형(Extraversion) 성향이 높아요!<br />
+                외향형 성향은 폭넓은 대인관계 유지, 사교적, 정열적, 활동적이라는 특징을 갖고 있어요.
               </div>
             </div>
           </div>
         </div>
       </div>
+      <div style="padding-top:10px;">
+        <center><button type="button" onclick="mintNFT()" class="nes-btn is-success"
+            style="font-size:1.5rem; width:200px;">✏️학습하기!</button></center>
+      </div>
     </div>
+  </div>
 
-    <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
-    <script src="../js/bootstrap386.js"></script>
-    <script src="../js/contract.js"></script>
-    <script src="../js/request.js"></script>
-    <script src="../js/function.js"></script>
-  </body>
+  <!-- Chatting -->
+  <div id="chattingPage" style="display:none; padding-bottom:20px;">
+    <div class="nes-container bg-light with-title m-4">
+      <p class="title" style="font-size:2rem;">💬 대화</p>
+      <section class="message-list">
+        <section class="message -left">
+          <i><img src="../src/enfp.png" style="width:100px; height:100px;"></i>
+          <!-- Balloon -->
+          <div class="nes-balloon from-left chat-balloon">
+            <p>안녕 난 enfp야</p>
+          </div>
+        </section>
+      </section>
+
+      <div style="padding-top: 30px;">
+        <div>
+          <h6 id="message-status-text" style="color:gray; padding-left:10px;"></h6>
+        </div>
+        <div class="input-group nes-field">
+          <div class="chatting-element">
+            <div class="nes-select" style="font-size:1.5rem; width:90%;">
+              <select required id="message_select">
+                <option value="0">채팅</option>
+                <option value="1">삼행시</option>
+                <option value="2">작문</option>
+                <option value="3">Q&A</option>
+              </select>
+            </div>
+          </div>
+          <div class="px-1 chatting-field">
+            <input type="text" id="message_field" class="form-control nes-input"
+              onKeypress="javascript:if(event.keyCode==13) {sendMessage()}" oninput="drawSpinner()">
+          </div>
+          <div class="chatting-config-icon">
+            <button type="button" class="btn nes-btn is-primary" style="font-size:1.7rem; width:90%;"
+              data-bs-toggle="modal" data-bs-target="#config-modal" onclick="openConfig()">⚙️</button>
+          </div>
+          <div class="chatting-element" style="text-align:right;">
+            <button type="button" class="btn nes-btn is-success" style="font-size:1.7rem; width:90%;"
+              onclick="sendMessage()">전송</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Config -->
+    <div class="modal fade" id="config-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+      aria-labelledby="configModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <button type="button" class="nes-btn is-error modal-close" data-bs-dismiss="modal" aria-label="Close"
+            style="width:50px; height:50px; padding-bottom:20px; margin-bottom:20px;">
+            <div class="modal-close-text">X</div>
+          </button>
+          <div style="font-size:1rem;">
+            <h4># 환경설정</h4>
+            <hr />
+            <label for="response_length_field">• Response Length :</label>
+            <input type="number" id="response_length_field" class="form-control nes-input" min="1" max="1024"
+              value="128" placeholder="128" style="margin-bottom:10px;">
+            <label for="temperature_field">• Temperature :</label>
+            <input type="number" id="temperature_field" class="form-control nes-input" min="0" max="1" step="0.1"
+              value="0.8" placeholder="0.8">
+            <div style="text-align: center;">
+              <button type="button" class="btn nes-btn is-primary"
+                style="font-size:1.3rem; width:100px; margin-top: 20px; margin-right: 10px;" data-bs-dismiss="modal"
+                aria-label="Close" onclick="saveConfig()">저장</button>
+              <button type="button" class="btn nes-btn is-error"
+                style="font-size:1.3rem; width:100px; margin-top: 20px; margin-left: 10px;" data-bs-dismiss="modal"
+                aria-label="Close">취소</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Connect to Wallet -->
+  <div id="walletPage" style="display:none; padding-bottom:20px;">
+    <div class="nes-container bg-light with-title m-4">
+      <p style="padding-top: 50px; padding-bottom: 50px; text-align: center;">
+        우측 상단의 <B>Connect</B> 버튼을 눌러 지갑에 연결해주세요!
+      </p>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+  <script src="../js/bootstrap386.js"></script>
+  <script src="../js/contract.js"></script>
+  <script src="../js/request.js"></script>
+  <script src="../js/function.js"></script>
+</body>
+
 </html>

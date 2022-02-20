@@ -6,14 +6,26 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 var response_length = 128;
 var temperature = 0.8;
 
-const PAGES = ['startPage', 'trainingPage', 'chattingPage'];
+const PAGES = ['startPage', 'trainingPage', 'chattingPage', 'walletPage'];
+const WALLET_PAGE = 3;
+var current_page = 0;
+var try_page = 0;
 
 function movePage(targetIdx) {
-  var idx;
-  for (idx = 0; idx < PAGES.length; idx++) {
-    if ( idx == targetIdx ) $('#'+PAGES[idx]).show();
-    else $('#'+PAGES[idx]).hide();
+  if (targetIdx == current_page) return;
+  if (account == '') {
+      try_page = targetIdx;
+      targetIdx = WALLET_PAGE;
   }
+
+  $('#'+PAGES[current_page]).hide();
+  $('#'+PAGES[targetIdx]).show();
+  current_page = targetIdx;
+}
+
+async function connect() {
+    await connectMetamask();
+    movePage(try_page);
 }
 
 function setLoadingStatus(isOwner, isLoading) {
