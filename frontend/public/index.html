@@ -22,7 +22,7 @@
   <div class="sticky-top">
     <div class="row nav-row" style="width:100%; padding-top:20px;">
       <!-- Nav -->
-      <div class="nav-logo" style="padding:0;">
+      <div class="nav-logo">
         <nav class="navbar navbar-light bg-win95" style="padding-left:0;">
           <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -35,9 +35,15 @@
           </div>
         </nav>
       </div>
-      <div class="nav-connect" style="padding:0;">
+      <div class="nav-coin">
+        <div style="margin-top:13px;">
+          <i id="coin_icon" class="nes-icon coin is-medium" style="margin-bottom:13px; margin-right:13;"
+          data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title=""></i>
+        </div>
+      </div>
+      <div class="nav-connect">
         <div style="margin: 13px 20px 4px 4px;">
-          <a id="connectMetamaskButton" onclick="connect()" class="nes-btn h2" role="button"
+          <a id="connect_metamask_button" onclick="connect()" class="nes-btn h2" role="button"
             data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Connect to metamask"
             style="width:100%; font-family: 'Press Start 2P', cursive; font-size:1.5rem;">
             <span class="showMetamaskStatus btn-text" style="font-size:1rem;">Connect</span>

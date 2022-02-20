@@ -69,7 +69,7 @@ hr {
   box-shadow: -4px 0, 4px 0, -4px 4px var(--gray-color), 0 4px, -8px 4px, -4px 8px, -8px 8px;
 }
 
-.educated-degree {
+.educated-degree, .coin-text {
   font-family: 'Press Start 2P';
 }
 
@@ -82,11 +82,18 @@ hr {
 }
 
 .nav-logo {
-  width: calc(100% - 170px);
+  width: calc(100% - 220px);
+  padding:0;
+}
+
+.nav-coin {
+  width: 50px;
+  padding: 0;
 }
 
 .nav-connect {
   width: 170px;
+  padding: 0;
 }
 
 .chatting-field {

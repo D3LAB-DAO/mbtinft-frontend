@@ -1,4 +1,5 @@
 var account = '';
+var token_remain = 0.000;
 
 async function connectMetamask() {
   if (typeof window.ethereum !== 'undefined') {
@@ -8,12 +9,13 @@ async function connectMetamask() {
     const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
     account = accounts[0];
     $('.showMetamaskStatus').html(account.substr(0, 4) + '..' + account.substr(account.length-2, 2));
-    $('#connectMetamaskButton').attr('data-bs-original-title', account).tooltip('show');
+    $('#connect_metamask_button').attr('data-bs-original-title', account).tooltip('show');
+    $('#coin_icon').attr('data-bs-original-title', token_remain.toFixed(3) + ' CGV').tooltip('show');
     console.log(window.contract);
   } else {
     // Metamask not installed
     $('.showMetamaskStatus').html("Error!");
-    $('#connectMetamaskButton').attr('data-bs-original-title', "Metamask required").tooltip('show');
+    $('#connect_metamask_button').attr('data-bs-original-title', "Metamask required").tooltip('show');
   }
 }
 
