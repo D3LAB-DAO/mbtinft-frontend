@@ -10,9 +10,10 @@ async function connectMetamask() {
     account = accounts[0];
     $('.showMetamaskStatus').html(account.substr(0, 4) + '..' + account.substr(account.length-2, 2));
     $('#connect_metamask_button').attr('data-bs-original-title', account).tooltip('show');
-    $('#coin_icon').attr('data-bs-original-title', token_remain.toFixed(3) + ' CGV').tooltip('show');
+    $('#coin_icon').attr('data-bs-original-title', token_remain.toFixed(3) + ' CGV').tooltip('hide');
     $('#mint_tooltip').attr('data-bs-original-title', '').tooltip('hide');
     $('#mint_button').attr('disabled', false);
+    $('.nav-profile').css("visibility", "visible");
     console.log(window.contract);
   } else {
     // Metamask not installed

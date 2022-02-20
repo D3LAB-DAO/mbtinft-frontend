@@ -35,6 +35,10 @@
           </div>
         </nav>
       </div>
+      <div class="nav-profile" style="visibility: hidden;">
+        <img id="enfp-profile" type="button" src="../src/enfp-sm.png" data-bs-toggle="modal"
+        data-bs-target="#friend-modal" style="width:50px; height:50px; margin-top:16px;">
+      </div>
       <div class="nav-coin">
         <div style="margin-top:13px;">
           <i id="coin_icon" class="nes-icon coin is-medium" style="margin-bottom:13px; margin-right:13;"
@@ -80,6 +84,27 @@
   </div>
 
   <!-- Contents -->
+  <!-- Select Friend Modal -->
+  <div class="modal fade" id="friend-modal" tabindex="-1" aria-labelledby="friendModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <button type="button" class="nes-btn is-error modal-close" data-bs-dismiss="modal" aria-label="Close"
+          style="width:50px; height:50px; padding-bottom:20px; margin-bottom:20px;">
+          <div class="modal-close-text">X</div>
+        </button>
+        <div style="font-size:1rem;">
+          <h4># 칭구 목록</h4>
+          <hr />
+          <h5>함께할 친구를 선택해주세요.</h5>
+          <img type="button" class="friend-profile" src="../src/intp-sm.png" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="#1">
+          <img type="button" class="friend-profile" src="../src/enfp-sm.png" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="#2">
+          <img type="button" class="friend-profile" src="../src/neutral-sm.png" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="#3">
+          <img type="button" class="friend-profile" src="../src/neutral-sm.png" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="#4">
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Start -->
   <div id="startPage" style="display:block; padding-bottom:20px;">
     <div class="nes-container bg-light with-title m-4">

@@ -92,8 +92,17 @@ hr {
 }
 
 .nav-logo {
-  width: calc(100% - 220px);
+  width: calc(100% - 275px);
   padding:0;
+}
+
+.nav-profile {
+  width: 55px;
+  padding: 0;
+}
+
+.nav-profile:hover {
+  opacity: 0.5;
 }
 
 .nav-coin {
@@ -104,6 +113,14 @@ hr {
 .nav-connect {
   width: 170px;
   padding: 0;
+}
+
+.friend-profile {
+  opacity: 0.5;
+}
+
+.friend-profile:hover {
+  opacity: 1;
 }
 
 .chatting-field {
