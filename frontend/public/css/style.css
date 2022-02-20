@@ -45,6 +45,14 @@ hr {
   opacity: 1;
 }
 
+.educated-degree {
+  font-family: 'Press Start 2P';
+}
+
+.educated-degree:hover {
+  background-color: gold;
+}
+
 .nav-row {
   background-color: var(--main-color);
 }
