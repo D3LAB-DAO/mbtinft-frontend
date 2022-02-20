@@ -3,6 +3,9 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltip(tooltipTriggerEl)
 })
 
+var response_length = 128;
+var temperature = 0.8;
+
 const PAGES = ['startPage', 'trainingPage', 'chattingPage'];
 
 function movePage(targetIdx) {
@@ -76,7 +79,7 @@ async function sendRequestAndDrawResponse(msg) {
     $(".message-list").append(message_html);
     window.scrollTo(0,document.body.scrollHeight);
    /*
-    sendInferenceReq(msg).done(function(reply_message){
+    sendInferenceReq(msg, response_length, temperature).done(function(reply_message){
         console.log(reply_message);
         var message_html = `
         <section class="message -left">
@@ -107,7 +110,18 @@ function sendMessage() {
     $("#my-message-loading").remove();
     $("#message-status-text").text("");
     $('input#message_field').val('');
+    console.log("selected option = " + $('select#message_select').val());
     window.scrollTo(0,document.body.scrollHeight);
     setLoadingStatus(false, true);
     sendRequestAndDrawResponse(message);
+}
+
+function openConfig() {
+    $('input#response_length_field').val(response_length);
+    $('input#temperature_field').val(temperature);
+}
+
+function saveConfig() {
+    response_length = $('input#response_length_field').val();
+    temperature = $('input#temperature_field').val();
 }

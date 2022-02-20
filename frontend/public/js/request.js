@@ -29,9 +29,9 @@ async function echo(msg) {
 }
 
 /* curl test */
-function sendInferenceReq(msg) {
+function sendInferenceReq(msg, response_len, temp) {
     /* curl -X POST -H 'Content-Type: application/json' http://44.200.190.196:33327/predict -d '{"prompt": "안녕하세요"}' */
-    var querydata = '{"prompt": "' + msg + '", "temperature": 0.8, "max_length": 128}';
+    var querydata = '{"prompt": "' + msg + '", "temperature": ' + temp + ', "max_length": ' + response_len + '}';
     console.log("Send prompt", querydata);
     return $.ajax({
       url: 'http://44.200.190.196:33327/predict',

@@ -162,11 +162,46 @@
         <div style="padding-top: 30px;">
           <div><h6 id="message-status-text" style="color:gray; padding-left:10px;"></h6></div>
           <div class="input-group nes-field">
-            <div class="col-sm-10 px-1">
+            <div class="chatting-element">
+              <div class="nes-select" style="font-size:1.5rem; width:90%;">
+                <select required id="message_select">
+                  <option value="0">채팅</option>
+                  <option value="1">삼행시</option>
+                  <option value="2">작문</option>
+                  <option value="3">Q&A</option>
+                </select>
+              </div>
+            </div>
+            <div class="px-1 chatting-field">
               <input type="text" id="message_field" class="form-control nes-input" onKeypress="javascript:if(event.keyCode==13) {sendMessage()}" oninput="drawSpinner()">
             </div>
-            <div class="col-sm-2" style="text-align:right;">
+            <div class="chatting-config-icon">
+              <button type="button" class="btn nes-btn is-primary" style="font-size:1.7rem; width:90%;" data-bs-toggle="modal" data-bs-target="#config-modal" onclick="openConfig()">⚙️</button>
+            </div>
+            <div class="chatting-element" style="text-align:right;">
               <button type="button" class="btn nes-btn is-success" style="font-size:1.7rem; width:90%;" onclick="sendMessage()">전송</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Config -->
+      <div class="modal fade" id="config-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="configModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <button type="button" class="nes-btn is-error modal-close" data-bs-dismiss="modal" aria-label="Close" style="width:50px; height:50px; padding-bottom:20px; margin-bottom:20px;">
+              <div class="modal-close-text">X</div>
+            </button>
+            <div style="font-size:1rem;">
+              <h4># 환경설정</h4>
+              <hr/>
+              <label for="response_length_field">• Response Length :</label>
+              <input type="number" id="response_length_field" class="form-control nes-input" min="1" max="1024" value="128" placeholder="128" style="margin-bottom:10px;">
+              <label for="temperature_field">• Temperature :</label>
+              <input type="number" id="temperature_field" class="form-control nes-input" min="0" max="1" step="0.1" value="0.8" placeholder="0.8">
+              <div style="text-align: center;">
+                <button type="button" class="btn nes-btn is-primary" style="font-size:1.3rem; width:100px; margin-top: 20px; margin-right: 10px;" data-bs-dismiss="modal" aria-label="Close" onclick="saveConfig()">저장</button>
+                <button type="button" class="btn nes-btn is-error" style="font-size:1.3rem; width:100px; margin-top: 20px; margin-left: 10px;" data-bs-dismiss="modal" aria-label="Close">취소</button>
+              </div>
             </div>
           </div>
         </div>

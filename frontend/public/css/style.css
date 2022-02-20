@@ -31,6 +31,10 @@ body {
   visibility: hidden;
 }
 
+select:focus {
+  outline: none;
+}
+
 h4 {
   line-height: 2rem;
 }
@@ -51,6 +55,18 @@ hr {
 
 .nav-connect {
   width: 170px;
+}
+
+.chatting-field {
+  width: calc(100% - 370px);
+}
+
+.chatting-element {
+  width: 150px;
+}
+
+.chatting-config-icon {
+  width: 70px;
 }
 
 .modal-content {
@@ -132,7 +148,7 @@ blockquote:hover {
   opacity: 1;
 }
 
-.nes-progress:hover {
+.nes-progress:hover, .sub-blockquote:hover {
   background-color: gold;
 }
 
