@@ -90,8 +90,9 @@
       <h4>✏️데이터를 통해 칭구를 학습시켜보세요</h4>
       <h4>💬학습된 칭구와 대화해보세요</h4>
       </p>
-      <center><button type="button" onclick="mintNFT()" class="nes-btn is-success"
-          style="font-size:1.5rem; width:50%;">💌칭구만들기!</button></center>
+      <div id="mint_tooltip" style="text-align: center;" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="먼저 지갑에 연결하세요!">
+        <button id="mint_button" type="button" class="nes-btn is-success" disabled="true" style="font-size:1.5rem; width:50%;" onclick="mintNFT()">💌칭구만들기!</button>
+      </div>
     </div>
   </div>
 
