@@ -70,6 +70,11 @@
           aria-controls="navbarToggleExternalContent" aria-expanded="false">
           <span> 💬 대화</span>
         </a>
+        <a onclick="movePage(3)" class="list-group-item list-group-item-action bg-win95" type="button"
+          data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent"
+          aria-controls="navbarToggleExternalContent" aria-expanded="false">
+          <span> ✋🏻 거버넌스</span>
+        </a>
       </div>
     </div>
   </div>
@@ -271,6 +276,56 @@
             칭구의 메세지를 어록으로 등록해 프로필에서 확인할 수 있습니다. 현재는 지원하지 않고 있습니다.😅
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Governance -->
+  <div id="governancePage" style="display:none; padding-bottom:20px;">
+    <div class="nes-container bg-light with-title m-4">
+      <p class="title" style="font-size:2rem;">✋🏻 거버넌스</p>
+      
+      <div class="nes-container bg-light m-4">
+        <blockquote data-bs-toggle="collapse" data-bs-target="#governance1" aria-controls="governance1" aria-expanded="true">
+        <span># 레어도에 따른 혜택 적용<span class="governance-date">2022.02.20~2022.02.28</span></span>
+        </blockquote>
+        <div class="collapse show governance" id="governance1">
+          <p>다양한 스타일을 줄 수 있게 바꿔주세요.</p>
+          <label>
+            <input type="radio" class="nes-radio" name="answer" checked />
+            <span>a. 텍스트 색상</span>
+          </label>
+          <br/>
+          <label>
+            <input type="radio" class="nes-radio" name="answer" />
+            <span>b. 말풍선 색상</span>
+          </label>
+          <progress class="nes-progress is-error" value="70" max="100" data-label="70%" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="participants: 7"></progress>
+        </div>
+      </div>
+
+      <div class="nes-container bg-light m-4">
+        <blockquote data-bs-toggle="collapse" data-bs-target="#governance2" aria-controls="governance2" aria-expanded="true">
+        <span># 칭구랑 대화하기 옵션<span class="governance-date">2022.02.20~2022.02.28</span></span>
+        </blockquote>
+        <div class="collapse show governance" id="governance2">
+          <p>옵션 이런거 저런거 추가해주세요</p>
+          <label>
+            <input type="radio" class="nes-radio" name="answer" checked />
+            <span>a. 이런거</span>
+          </label>
+          <br/>
+          <label>
+            <input type="radio" class="nes-radio" name="answer" />
+            <span>b. 저런거</span>
+          </label>
+          <progress class="nes-progress is-primary" value="30" max="100" data-label="30%" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="participants: 10"></progress>
+        </div>
+      </div>
+
+      <div style="padding-top:10px;">
+        <center><button type="button" class="nes-btn is-success"
+            style="font-size:1.5rem; width:200px;">🙋🏻‍♀️제안하기!</button></center>
       </div>
     </div>
   </div>

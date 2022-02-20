@@ -69,12 +69,22 @@ hr {
   box-shadow: -4px 0, 4px 0, -4px 4px var(--gray-color), 0 4px, -8px 4px, -4px 8px, -8px 8px;
 }
 
-.educated-degree, .coin-text {
+.educated-degree, .coin-text, .governance-date {
   font-family: 'Press Start 2P';
 }
 
 .educated-degree:hover {
   background-color: gold;
+}
+
+.governance-date {
+  font-size: 0.5rem;
+  margin-left: 20px;
+  color: var(--main-color);
+}
+
+.governance p, .governance span {
+  font-size: 1.5rem;
 }
 
 .nav-row {

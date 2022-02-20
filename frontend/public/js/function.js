@@ -6,8 +6,8 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 var response_length = 128;
 var temperature = 0.8;
 
-const PAGES = ['startPage', 'trainingPage', 'chattingPage', 'walletPage'];
-const WALLET_PAGE = 3;
+const PAGES = ['startPage', 'trainingPage', 'chattingPage', 'governancePage', 'walletPage'];
+const WALLET_PAGE = 4;
 var current_page = 0;
 var try_page = 0;
 
