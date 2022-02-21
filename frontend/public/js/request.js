@@ -11,7 +11,7 @@ async function connectMetamask() {
     $('.showMetamaskStatus').html(account.substr(0, 4) + '..' + account.substr(account.length-2, 2));
     $('#connect_metamask_button').attr('data-bs-original-title', account).tooltip('show');
     $('#coin_icon').attr('data-bs-original-title', token_remain.toFixed(3) + ' CGV').tooltip('hide');
-    $('#mint_tooltip').attr('data-bs-original-title', '').tooltip('hide');
+    $('#mint_tooltip').attr('data-bs-original-title', '함께할 칭구를 선택하세요!').tooltip('hide');
     $('#mint_button').attr('disabled', false);
     $('.nav-profile').css("visibility", "visible");
     console.log(window.contract);
@@ -23,8 +23,14 @@ async function connectMetamask() {
 }
 
 async function mintNFT() {
-    let response = await window.contract.methods.mintNFT(0, account).send({ from: account });
-    console.log(response);
+    var checked_profile = $(':radio[name="profiles"]:checked').val();
+    console.log(checked_profile);
+    if (typeof checked_profile !== 'undefined') {
+      // TODO 'checked_profile' 넘기기
+      $('#mint_tooltip').attr('data-bs-original-title', '').tooltip('hide');
+      let response = await window.contract.methods.mintNFT(0, account).send({ from: account });
+      console.log(response);
+    }
 }
 
 async function echo(msg) {
