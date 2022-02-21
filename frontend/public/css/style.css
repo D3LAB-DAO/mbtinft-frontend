@@ -66,7 +66,7 @@ hr {
 }
 
 .message.-right .nes-balloon:hover:after {
-  box-shadow: -4px 0, 4px 0, -4px 4px var(--gray-color), 0 4px, -8px 4px, -4px 8px, -8px 8px;
+  box-shadow: -4px 0, 4px 0, 4px 4px var(--gray-color), 0 4px, 8px 4px, 4px 8px, 8px 8px;
 }
 
 .ranking {

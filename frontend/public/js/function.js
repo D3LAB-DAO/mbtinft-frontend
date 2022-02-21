@@ -5,12 +5,15 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 
 var response_length = 128;
 var temperature = 0.8;
+var inference_price = 2;
 
 const PAGES = ['startPage', 'trainingPage', 'chattingPage', 'rankingPage', 'governancePage', 'walletPage'];
 const START_PAGE = 0;
 const WALLET_PAGE = 5;
 var current_page = 0;
 var try_page = 0;
+
+var msg_count = 0;
 
 function movePage(targetIdx) {
   if (targetIdx == current_page) return;
@@ -78,13 +81,13 @@ function drawSpinner() {
     }
 }
 
-async function sendRequestAndDrawResponse(msg) {
-    let reply_message = await echo(msg);
-    console.log(reply_message);
+async function sendRequestAndDrawResponse(msg, index) {
+    let reply_message = await echo(msg); // TODO: index와 함께 요청
+    console.log('msg#' + index + ' : ' + reply_message);
     var message_html = `
     <section class="message -left">
         <i><img src="../src/enfp.png" style="width:100px; height:100px;"></i>
-        <div class="nes-balloon from-left chat-balloon left-balloon" data-bs-toggle="modal" data-bs-target="#like-modal">
+        <div id="receive-message-` + index + `" class="nes-balloon from-left chat-balloon left-balloon" data-bs-toggle="modal" data-bs-target="#like-modal">
             <p>` + reply_message + `</p>
             <i class="nes-icon is-medium heart set-like"></i>
         </div>
@@ -92,14 +95,23 @@ async function sendRequestAndDrawResponse(msg) {
     `;
     setLoadingStatus(false, false);
     $(".message-list").append(message_html);
+    $("#receive-message-"+index).hover(
+        function() {
+            $(this).find( ".set-like" ).css( "visibility", "visible" );
+        }, function() {
+            $(this).find( ".set-like" ).css( "visibility", "hidden" );
+        }
+    );
     window.scrollTo(0,document.body.scrollHeight);
+    msg_count += 1;
    /*
+    // TODO: index와 함께 요청
     sendInferenceReq(msg, response_length, temperature).done(function(reply_message){
-        console.log(reply_message);
+        console.log('msg#' + index + ' : ' + reply_message);
         var message_html = `
         <section class="message -left">
             <i><img src="../src/enfp.png" style="width:100px; height:100px;"></i>
-            <div class="nes-balloon from-left chat-balloon left-balloon" data-bs-toggle="modal" data-bs-target="#like-modal">
+            <div id="receive-message-` + index + `" class="nes-balloon from-left chat-balloon left-balloon" data-bs-toggle="modal" data-bs-target="#like-modal">
                 <p>` + reply_message + `</p>
                 <i class="nes-icon is-medium heart set-like"></i>
             </div>
@@ -107,7 +119,15 @@ async function sendRequestAndDrawResponse(msg) {
         `;
         setLoadingStatus(false, false);
         $(".message-list").append(message_html);
+        $("#receive-message-"+index).hover(
+        function() {
+            $(this).find( ".set-like" ).css( "visibility", "visible" );
+        }, function() {
+            $(this).find( ".set-like" ).css( "visibility", "hidden" );
+        }
+    );
         window.scrollTo(0,document.body.scrollHeight);
+        msg_count += 1;
     });
     */
 }
@@ -119,25 +139,25 @@ function sendMessage() {
         <div class="nes-balloon from-right chat-balloon">
             <p>` + message + `</p>
         </div>
-        <i><img src="../src/intp.png" style="width:100px; height:100px;"></i>
     </section>
     `;
     $(".message-list").append(message_html);
-    $("#my-message-loading").remove();
-    $("#message-status-text").text("");
+    setLoadingStatus(true, false);
     $('input#message_field').val('');
     console.log("selected option = " + $('select#message_select').val());
     window.scrollTo(0,document.body.scrollHeight);
     setLoadingStatus(false, true);
-    sendRequestAndDrawResponse(message);
+    sendRequestAndDrawResponse(message, msg_count);
 }
 
 function openConfig() {
     $('input#response_length_field').val(response_length);
     $('input#temperature_field').val(temperature);
+    $('select#inference_price_select').val(inference_price);
 }
 
 function saveConfig() {
     response_length = $('input#response_length_field').val();
     temperature = $('input#temperature_field').val();
+    inference_price = $('select#inference_price_select').val();
 }
