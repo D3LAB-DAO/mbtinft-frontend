@@ -7,13 +7,14 @@ var response_length = 128;
 var temperature = 0.8;
 
 const PAGES = ['startPage', 'trainingPage', 'chattingPage', 'rankingPage', 'governancePage', 'walletPage'];
+const START_PAGE = 0;
 const WALLET_PAGE = 5;
 var current_page = 0;
 var try_page = 0;
 
 function movePage(targetIdx) {
   if (targetIdx == current_page) return;
-  if (account == '') {
+  if (account == '' && targetIdx != START_PAGE) {
       try_page = targetIdx;
       targetIdx = WALLET_PAGE;
   }
