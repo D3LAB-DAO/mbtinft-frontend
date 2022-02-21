@@ -24,6 +24,7 @@ function movePage(targetIdx) {
 }
 
 async function connect() {
+    if (account !== '') return;
     await connectMetamask();
     movePage(try_page);
 }
