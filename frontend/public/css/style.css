@@ -14,6 +14,42 @@
   unicode-range: U+AC00-D7A3; /* Korean */
 }
 
+@media screen and (max-width: 660px) {
+  .stat-profile-sm {
+    display: block;
+  }
+  .stat-profile-md {
+    display: none;
+  }
+  .stat-profile-lg {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 660px) and (max-width: 1200px) {
+  .stat-profile-sm {
+    display: none;
+  }
+  .stat-profile-md {
+    display: block;
+  }
+  .stat-profile-lg {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .stat-profile-sm {
+    display: none;
+  }
+  .stat-profile-md {
+    display: none;
+  }
+  .stat-profile-lg {
+    display: block;
+  }
+}
+
 :root {
   --main-color: #018281;
   --primary-color: #209cee;
