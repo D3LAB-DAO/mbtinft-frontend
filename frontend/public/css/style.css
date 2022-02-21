@@ -77,7 +77,7 @@ hr {
   font-family: 'Press Start 2P';
 }
 
-.ranker:hover, .educated-degree:hover {
+.ranker:hover, .educated-degree:hover, .remain-sp:hover {
   background-color: gold;
 }
 
@@ -268,6 +268,37 @@ blockquote:hover {
   opacity: 1;
 }
 
+.stat-button-left {
+  width:40px;
+  height:40px;
+  padding:0px;
+  margin:0px;
+  position:relative;
+  top:-20px;
+  left:0px;
+}
+
+.stat-button-right {
+  width:40px;
+  height:40px;
+  padding:0px;
+  margin:0px;
+  position:relative;
+  top:-20px;
+  right:0px;
+}
+
+.stat-text {
+  position:absolute;
+  top:-10px;
+  right:10px;
+}
+
+.stat-bar {
+  width: calc(100% - 130px);
+  position:relative;
+}
+
 .nes-progress:hover, .sub-blockquote:hover {
   background-color: gold;
 }
@@ -276,7 +307,7 @@ blockquote:hover {
   content: attr(data-label);
   font-size: 0.8em;
   text-align: left;
-  padding-left: 50px;
+  padding-left: 20px;
   vertical-align: 0;
   color: var(--gray-color);
   
@@ -292,11 +323,15 @@ blockquote:hover {
 
 .is-reverse.nes-progress:before {
   text-align: right;
-  padding-right: 50px;
+  padding-right: 20px;
 }
 
 .nes-progress.is-reverse::-webkit-progress-bar {
   background-color: var(--dark-color);
+}
+
+.nes-progress.is-reverse-warning:before {
+  color: black;
 }
 
 .nes-progress.is-reverse-warning::-webkit-progress-bar {
