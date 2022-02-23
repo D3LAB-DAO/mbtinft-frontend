@@ -1,4 +1,6 @@
-// temp handler for lorem ipsum initial msg
+/*
+ * Handler functions (demo feature)
+ */
 $( ".left-balloon" ).hover(
     function() {
         $(this).find( ".set-like" ).css( "visibility", "visible" );

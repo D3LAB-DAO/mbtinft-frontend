@@ -41,14 +41,15 @@
       </div>
       <div class="nav-coin">
         <div style="margin-top:13px;">
-          <i id="coin_icon" class="nes-icon coin is-medium" style="margin-bottom:13px; margin-right:13;"
-            data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title=""></i>
+          <i type="button" onclick="updateBalanceOfCGVOnClick()" id="coin_icon" class="nes-icon coin is-medium"
+            style="margin-bottom:13px; margin-right:13;" data-bs-toggle="tooltip" data-bs-placement="bottom"
+            data-bs-original-title=""></i>
         </div>
       </div>
       <div class="nav-connect">
         <div style="margin: 13px 20px 4px 4px;">
-          <a id="connect_metamask_button" onclick="connect()" class="nes-btn h2" role="button" data-bs-toggle="tooltip"
-            data-bs-placement="bottom" data-bs-original-title="Connect to metamask"
+          <a id="connect_metamask_button" onclick="connectOnClick()" class="nes-btn h2" role="button"
+            data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Connect to metamask"
             style="width:100%; font-family: 'Press Start 2P', cursive; font-size:1.5rem;">
             <span class="showMetamaskStatus btn-text" style="font-size:1rem;">Connect</span>
           </a>
@@ -59,27 +60,27 @@
     <!-- Menu -->
     <div class="collapse" id="navbarToggleExternalContent">
       <div class="list-group">
-        <a onclick="movePage(0)" class="list-group-item list-group-item-action bg-win95" type="button"
+        <a onclick="movePageOnClick(0)" class="list-group-item list-group-item-action bg-win95" type="button"
           data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent"
           aria-controls="navbarToggleExternalContent" aria-expanded="false">
           <span> 📃 튜토리얼</span>
         </a>
-        <a onclick="movePage(1)" class="list-group-item list-group-item-action bg-win95" type="button"
+        <a onclick="movePageOnClick(1)" class="list-group-item list-group-item-action bg-win95" type="button"
           data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent"
           aria-controls="navbarToggleExternalContent" aria-expanded="false">
           <span> 💓 칭구</span>
         </a>
-        <a onclick="movePage(2)" class="list-group-item list-group-item-action bg-win95" type="button"
+        <a onclick="movePageOnClick(2)" class="list-group-item list-group-item-action bg-win95" type="button"
           data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent"
           aria-controls="navbarToggleExternalContent" aria-expanded="false">
           <span> 💬 대화</span>
         </a>
-        <a onclick="movePage(3)" class="list-group-item list-group-item-action bg-win95" type="button"
+        <a onclick="movePageOnClick(3)" class="list-group-item list-group-item-action bg-win95" type="button"
           data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent"
           aria-controls="navbarToggleExternalContent" aria-expanded="false">
           <span> 🏆 랭킹</span>
         </a>
-        <a onclick="movePage(4)" class="list-group-item list-group-item-action bg-win95" type="button"
+        <a onclick="movePageOnClick(4)" class="list-group-item list-group-item-action bg-win95" type="button"
           data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent"
           aria-controls="navbarToggleExternalContent" aria-expanded="false">
           <span> ✋🏻 거버넌스</span>
@@ -128,44 +129,50 @@
         <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-2">
           <label>
             <input type="radio" class="profile-radio" name="profiles" value="enfp">
-            <img class="profile grayscale" type="button" src="../src/enfp-full-md.png" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="ENFP">
+            <img class="profile grayscale" type="button" src="../src/enfp-full-md.png" data-bs-toggle="tooltip"
+              data-bs-placement="bottom" data-bs-original-title="ENFP">
           </label>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-2">
           <label>
             <input type="radio" class="profile-radio" name="profiles" value="infp">
-            <img class="profile grayscale" type="button" src="../src/infp-full-md.png" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="INFP">
+            <img class="profile grayscale" type="button" src="../src/infp-full-md.png" data-bs-toggle="tooltip"
+              data-bs-placement="bottom" data-bs-original-title="INFP">
           </label>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-2">
           <label>
             <input type="radio" class="profile-radio" name="profiles" value="istj">
-            <img class="profile grayscale" type="button" src="../src/istj-full-md.png" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="ISTJ">
+            <img class="profile grayscale" type="button" src="../src/istj-full-md.png" data-bs-toggle="tooltip"
+              data-bs-placement="bottom" data-bs-original-title="ISTJ">
           </label>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-2">
           <label>
             <input type="radio" class="profile-radio" name="profiles" value="infj">
-            <img class="profile grayscale" type="button" src="../src/infj-full-md.png" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="INFJ">
+            <img class="profile grayscale" type="button" src="../src/infj-full-md.png" data-bs-toggle="tooltip"
+              data-bs-placement="bottom" data-bs-original-title="INFJ">
           </label>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-2">
           <label>
             <input type="radio" class="profile-radio" name="profiles" value="intp">
-            <img class="profile grayscale" type="button" src="../src/intp-full-md.png" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="INTP">
+            <img class="profile grayscale" type="button" src="../src/intp-full-md.png" data-bs-toggle="tooltip"
+              data-bs-placement="bottom" data-bs-original-title="INTP">
           </label>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-2">
           <label>
             <input type="radio" class="profile-radio" name="profiles" value="neutral">
-            <img class="profile grayscale" type="button" src="../src/neutral-full-md.png" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="NEUTRAL">
+            <img class="profile grayscale" type="button" src="../src/neutral-full-md.png" data-bs-toggle="tooltip"
+              data-bs-placement="bottom" data-bs-original-title="NEUTRAL">
           </label>
         </div>
       </div>
       <div id="mint_tooltip" style="text-align: center;" data-bs-toggle="tooltip" data-bs-placement="bottom"
         data-bs-original-title="먼저 지갑에 연결하세요!">
         <button id="mint_button" type="button" class="nes-btn is-success" disabled="true"
-          style="font-size:1.5rem; width:50%;" onclick="mintNFT()">💌칭구만들기!</button>
+          style="font-size:1.5rem; width:50%;" onclick="requestMintOnClick()">💌칭구만들기!</button>
       </div>
     </div>
   </div>
@@ -260,8 +267,8 @@
           <button type="button" class="nes-btn is-primary stat-button-left">
             <span class="stat-text">+</span>
           </button>
-          <progress class="nes-progress is-primary stat-bar" value="80" max="100" data-label="80%" data-bs-toggle="modal"
-            data-bs-target="#mymbti-modal">
+          <progress class="nes-progress is-primary stat-bar" value="80" max="100" data-label="80%"
+            data-bs-toggle="modal" data-bs-target="#mymbti-modal">
           </progress>
           <button type="button" class="nes-btn is-primary stat-button-right">
             <span class="stat-text">+</span>
@@ -282,7 +289,8 @@
           <button type="button" class="nes-btn is-warning stat-button-left">
             <span class="stat-text">+</span>
           </button>
-          <progress class="nes-progress is-reverse is-reverse-warning stat-bar" value="45" max="100" data-label="55%"></progress>
+          <progress class="nes-progress is-reverse is-reverse-warning stat-bar" value="45" max="100"
+            data-label="55%"></progress>
           <button type="button" class="nes-btn is-warning stat-button-right">
             <span class="stat-text">+</span>
           </button>
@@ -292,7 +300,8 @@
           <button type="button" class="nes-btn is-error stat-button-left">
             <span class="stat-text">+</span>
           </button>
-          <progress class="nes-progress is-reverse is-reverse-error stat-bar" value="30" max="100" data-label="70%"></progress>
+          <progress class="nes-progress is-reverse is-reverse-error stat-bar" value="30" max="100"
+            data-label="70%"></progress>
           <button type="button" class="nes-btn is-error stat-button-right">
             <span class="stat-text">+</span>
           </button>
@@ -318,13 +327,17 @@
       <blockquote data-bs-toggle="collapse" data-bs-target="#mycollection" aria-controls="mycollection"
         aria-expanded="true"># 콜렉션</blockquote>
       <div class="collapse show" id="mycollection">
-          <i class="nes-icon trophy is-large" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="학습왕 1위 (2022.01.22)"></i>
-          <i class="nes-icon trophy is-medium" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="학습왕 3위 (2022.02.22)"></i>
-          <i class="nes-icon trophy is-medium" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="인기왕 3위 (2022.02.22)"></i>
-          <i class="nes-icon trophy is-medium" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="우정왕 3위 (2022.02.22)"></i>
+        <i class="nes-icon trophy is-large" data-bs-toggle="tooltip" data-bs-placement="bottom"
+          data-bs-original-title="학습왕 1위 (2022.01.22)"></i>
+        <i class="nes-icon trophy is-medium" data-bs-toggle="tooltip" data-bs-placement="bottom"
+          data-bs-original-title="학습왕 3위 (2022.02.22)"></i>
+        <i class="nes-icon trophy is-medium" data-bs-toggle="tooltip" data-bs-placement="bottom"
+          data-bs-original-title="인기왕 3위 (2022.02.22)"></i>
+        <i class="nes-icon trophy is-medium" data-bs-toggle="tooltip" data-bs-placement="bottom"
+          data-bs-original-title="우정왕 3위 (2022.02.22)"></i>
       </div>
       <div style="padding-top:10px;">
-        <center><button type="button" onclick="mintNFT()" class="nes-btn is-success"
+        <center><button type="button" onclick="" class="nes-btn is-success"
             style="font-size:1.5rem; width:200px;">✏️학습하기!</button></center>
       </div>
     </div>
@@ -367,11 +380,11 @@
           </div>
           <div class="chatting-config-icon">
             <button type="button" class="btn nes-btn is-primary" style="font-size:1.7rem; width:90%;"
-              data-bs-toggle="modal" data-bs-target="#config-modal" onclick="openConfig()">⚙️</button>
+              data-bs-toggle="modal" data-bs-target="#config-modal" onclick="openConfigOnClick()">⚙️</button>
           </div>
           <div class="chatting-element" style="text-align:right;">
             <button type="button" class="btn nes-btn is-success" style="font-size:1.7rem; width:90%;"
-              onclick="sendMessage()">전송</button>
+              onclick="sendMessageOnClick()"><span id="approve-text">로딩중..</span></button>
           </div>
         </div>
       </div>
@@ -408,7 +421,7 @@
             <div style="text-align: center;">
               <button type="button" class="btn nes-btn is-primary"
                 style="font-size:1.3rem; width:100px; margin-top: 20px; margin-right: 10px;" data-bs-dismiss="modal"
-                aria-label="Close" onclick="saveConfig()">저장</button>
+                aria-label="Close" onclick="saveConfigOnClick()">저장</button>
               <button type="button" class="btn nes-btn is-error"
                 style="font-size:1.3rem; width:100px; margin-top: 20px; margin-left: 10px;" data-bs-dismiss="modal"
                 aria-label="Close">취소</button>
@@ -439,19 +452,22 @@
   <div id="rankingPage" style="display:none; padding-bottom:20px;">
     <div class="nes-container bg-light with-title m-4">
       <p class="title" style="font-size:2rem;">🏆 랭킹</p>
-      <blockquote data-bs-toggle="collapse" data-bs-target="#ranking1" aria-controls="ranking1" aria-expanded="true"><i class="nes-icon trophy is-medium"></i>학습왕</blockquote>
+      <blockquote data-bs-toggle="collapse" data-bs-target="#ranking1" aria-controls="ranking1" aria-expanded="true"><i
+          class="nes-icon trophy is-medium"></i>학습왕</blockquote>
       <div class="collapse show ranking" id="ranking1">
         <h4 class="ranker">1️⃣ 호애애애앵</h4>
         <h4 class="ranker">2️⃣ 이등</h4>
         <h4 class="ranker">3️⃣ 삼등</h4>
       </div>
-      <blockquote data-bs-toggle="collapse" data-bs-target="#ranking2" aria-controls="ranking2" aria-expanded="true"><i class="nes-icon heart is-medium"></i>우정왕</blockquote>
+      <blockquote data-bs-toggle="collapse" data-bs-target="#ranking2" aria-controls="ranking2" aria-expanded="true"><i
+          class="nes-icon heart is-medium"></i>우정왕</blockquote>
       <div class="collapse show ranking" id="ranking2">
         <h4 class="ranker">1️⃣ 호애애애앵</h4>
         <h4 class="ranker">2️⃣ 이등</h4>
         <h4 class="ranker">3️⃣ 삼등</h4>
       </div>
-      <blockquote data-bs-toggle="collapse" data-bs-target="#ranking3" aria-controls="ranking3" aria-expanded="true"><i class="nes-icon like is-medium"></i>인기왕</blockquote>
+      <blockquote data-bs-toggle="collapse" data-bs-target="#ranking3" aria-controls="ranking3" aria-expanded="true"><i
+          class="nes-icon like is-medium"></i>인기왕</blockquote>
       <div class="collapse show ranking" id="ranking3">
         <h4 class="ranker">1️⃣ 호애애애앵</h4>
         <h4 class="ranker">2️⃣ 이등</h4>
@@ -459,7 +475,7 @@
       </div>
     </div>
   </div>
-  
+
   <!-- Governance -->
   <div id="governancePage" style="display:none; padding-bottom:20px;">
     <div class="nes-container bg-light with-title m-4">
@@ -523,16 +539,28 @@
     </div>
   </div>
 
-  <!-- Scripts -->
+  <!-- Frontend Scripts -->
   <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
   <script src="../js/bootstrap386.js"></script>
-  <script src="../js/contract.js"></script>
-  <script src="../js/request.js"></script>
-  <script src="../js/function.js"></script>
+
+  <!-- Contract Scripts -->
+  <script src="../js/contract_CGV.js"></script>
+  <script src="../js/contract_CHINGGU.js"></script>
+  <script src="../js/contract_MBTINFT.js"></script>
+
+  <!-- Request function Scripts -->
+  <script src="../js/request_contract.js"></script>
+  <script src="../js/request_server.js"></script>
+  <script src="../js/interface_request.js"></script>
+
+  <!-- Interface function Scripts -->
+  <script src="../js/interface.js"></script>
+
+  <!-- Handler Scripts (demo feature) -->
   <script src="../js/handler.js"></script>
 </body>
 
