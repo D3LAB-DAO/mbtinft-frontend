@@ -89,7 +89,7 @@ async function requestMessageKey(_contract, _account, _token_id, _mode, _prompt,
       message_key = message_key.data.key;
       return message_key;
     }
-  } catch(e) {
+  } catch (e) {
     console.log(e);
     return;
   }

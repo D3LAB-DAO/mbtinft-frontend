@@ -11,7 +11,7 @@ let msg_count = 0;
 
 let tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
 let tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-  return new bootstrap.Tooltip(tooltipTriggerEl)
+    return new bootstrap.Tooltip(tooltipTriggerEl)
 })
 
 let response_length = 128;
@@ -83,7 +83,7 @@ async function requestMintOnClick() {
     let _contract = contract_CHINGGU;
     let _account = account;
     let _token_id = NFT_TOKEN_ID;
-    
+
     // todo : pass `checked_profile` to mint function
     let checked_profile = $(':radio[name="profiles"]:checked').val();
     console.log("checked_profile :", checked_profile);
@@ -145,7 +145,7 @@ async function sendRequestAndDrawResponse(_contract, _account, _msg, _mode, _res
     console.log("---- 1. request message key to server")
     let message_key = await requestMessageKey(_contract, _account, NFT_TOKEN_ID, _mode, _msg, _temperature, _response_length);
     console.log("----> message_key = ", message_key);
-    
+
     if (typeof message_key === 'undefined') {
         console.log("message key undefined error!");
         let reply_message = "서버 연결 에러입니다. 새로고침 해주세요.";
