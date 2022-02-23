@@ -1,8 +1,3 @@
-var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-  return new bootstrap.Tooltip(tooltipTriggerEl)
-})
-
 /* Constants */
 const PAGES = ['startPage', 'trainingPage', 'chattingPage', 'rankingPage', 'governancePage', 'walletPage'];
 const START_PAGE = 0;
@@ -10,9 +5,14 @@ const CHATTING_PAGE = 2;
 const WALLET_PAGE = 5;
 
 /* Saved Values on Frontend */
-var current_page = 0;
-var try_page = 0;
-var msg_count = 0;
+let current_page = 0;
+let try_page = 0;
+let msg_count = 0;
+
+let tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+let tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl)
+})
 
 let response_length = 128;
 let temperature = 0.8;
@@ -86,7 +86,7 @@ async function requestMintOnClick() {
 
     if (_contract === '' || _account === '') return;
     // todo : pass `checked_profile` to mint function
-    var checked_profile = $(':radio[name="profiles"]:checked').val();
+    let checked_profile = $(':radio[name="profiles"]:checked').val();
     console.log("checked_profile :", checked_profile);
     if (typeof checked_profile !== 'undefined') {
         $('#mint_tooltip').attr('data-bs-original-title', '').tooltip('hide');
@@ -129,8 +129,8 @@ async function sendMessageOnClick() {
 
 function setLoadingStatus(isOwner, isLoading) {
     if (isLoading) {
-        var loading_html = "";
-        var name = "";
+        let loading_html = "";
+        let name = "";
         if (isOwner) {
             loading_html = `
             <section id ="my-message-loading" class="message -right">
@@ -233,7 +233,7 @@ async function sendRequestAndDrawResponse(_contract, _account, _msg, _mode, _res
 
 function drawResponse(_index, _reply_message) {
     console.log('msg#' + _index + ' : ' + _reply_message);
-    var message_html = `
+    let message_html = `
     <section class="message -left">
         <i><img src="../src/enfp.png" style="width:100px; height:100px;"></i>
         <div id="receive-message-` + _index + `" class="nes-balloon from-left chat-balloon left-balloon" data-bs-toggle="modal" data-bs-target="#like-modal">
