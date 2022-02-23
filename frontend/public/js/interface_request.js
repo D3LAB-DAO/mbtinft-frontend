@@ -68,14 +68,17 @@ async function requestApprove(_contract, _account, _spender, _amount) {
 }
 
 async function requestMint(_contract, _account, _token_id) {
+  if (_contract === '' || _account === '') return;
   let response = await mint_CHINGGU(_contract, _account, _token_id);
 }
 
 async function requestUpload(_contract, _account, _key, _max_length, _inference_price) {
+  if (_contract === '' || _account === '') return;
   let response = await upload_MBTINFT(_contract, _account, _key, _max_length, _inference_price);
 }
 
 async function requestMessageKey(_contract, _account, _token_id, _mode, _prompt, _temperature, _response_length) {
+  if (_contract === '' || _account === '') return;
   let nonce = await nonces_MBTINFT(_contract, _account, _token_id);
   try {
     let message_key = await upload_SERVER(_account, _token_id, nonce, _mode, _prompt, _temperature, _response_length);
@@ -93,6 +96,7 @@ async function requestMessageKey(_contract, _account, _token_id, _mode, _prompt,
 }
 
 async function requestReply(_key) {
+  if (_key === '' || typeof _key === 'undefined') return;
   let reply_message = await download_SERVER(_key);
   return reply_message;
 }

@@ -83,8 +83,7 @@ async function requestMintOnClick() {
     let _contract = contract_CHINGGU;
     let _account = account;
     let _token_id = NFT_TOKEN_ID;
-
-    if (_contract === '' || _account === '') return;
+    
     // todo : pass `checked_profile` to mint function
     let checked_profile = $(':radio[name="profiles"]:checked').val();
     console.log("checked_profile :", checked_profile);
@@ -114,20 +113,78 @@ async function sendMessageOnClick() {
         </section>
         `;
         $(".message-list").append(message_html);
-        setLoadingStatus(true, false);
+        drawLoadingStatus(true, false);
         $('input#message_field').val('');
         window.scrollTo(0, document.body.scrollHeight);
-        setLoadingStatus(false, true);
+        drawLoadingStatus(false, true);
         let mode = $('select#message_select').val();
         sendRequestAndDrawResponse(_contract, _account, message, mode, response_length, temperature, inference_price, msg_count);
     }
 }
 
 /*
- * functions
+ * Request functions
  */
 
-function setLoadingStatus(isOwner, isLoading) {
+async function updateBalanceOfCGV(_contract, _account) {
+    if (_contract === '' || _account === '') return;
+    let token_string = await getBalanceOfCGV(_contract, _account);
+    $('#coin_icon').attr('data-bs-original-title', token_string + ' CGV').tooltip('show');
+}
+
+async function updateApprovalText(_contract, _account, _spender) {
+    if (_contract === '' || _account === '') return;
+    let allowance = await getAllowanceOfCGV(_contract, _account, _spender);
+    if (allowance > 0) $('#approve-text').text('전송');
+    else $('#approve-text').text('승인');
+}
+
+async function sendRequestAndDrawResponse(_contract, _account, _msg, _mode, _response_length, _temperature, _inference_price, _index) {
+    if (_contract === '' || _account === '') return;
+    // 1. 서버에 요청 (TEST_SERVER)
+    console.log("---- 1. request message key to server")
+    let message_key = await requestMessageKey(_contract, _account, NFT_TOKEN_ID, _mode, _msg, _temperature, _response_length);
+    console.log("----> message_key = ", message_key);
+    
+    if (typeof message_key === 'undefined') {
+        console.log("message key undefined error!");
+        let reply_message = "서버 연결 에러입니다. 새로고침 해주세요.";
+        drawResponse(_index, reply_message)
+        return;
+    }
+
+    // 2. 서버의 응답을 넣어 컨트랙트에 요청
+    console.log("---- 2. request upload to contract")
+    _inference_price = await getInferencePrice(_contract, _account); // TODO 설정에서 반영해서 이 함수에 전달되도록
+    await requestUpload(_contract, _account, '0x' + message_key, _response_length, _inference_price);
+    console.log("---- request to contract finish")
+
+    // 3. 서버에 응답이 들어갈때까지 계속 체크
+    console.log("---- 3. request reply to server")
+    let delay = 1000; // interval 1sec request
+    setTimeout(async function request() {
+        let reply_message = await requestReply(message_key);
+        if (typeof reply_message.data === 'undefined') {
+            // please wait
+            console.log("----> please wait..", reply_message);
+        } else {
+            // success!
+            console.log("----> success!! reply_message = ", reply_message);
+            reply_message = reply_message.data.result;
+
+            // Draw answer here.
+            drawResponse(_index, reply_message)
+            return;
+        }
+        setTimeout(request, delay);
+    }, delay);
+}
+
+/*
+ * Draw functions
+ */
+
+function drawLoadingStatus(isOwner, isLoading) {
     if (isLoading) {
         let loading_html = "";
         let name = "";
@@ -168,67 +225,10 @@ function setLoadingStatus(isOwner, isLoading) {
 
 function drawSpinner() {
     if ($("#my-message-loading").length == 0) {
-        setLoadingStatus(true, true);
+        drawLoadingStatus(true, true);
     } else if ($('input#message_field').val() == "") {
-        setLoadingStatus(true, false);
+        drawLoadingStatus(true, false);
     }
-}
-
-/*
- * Request functions
- */
-
-async function updateBalanceOfCGV(_contract, _account) {
-    if (_contract === '' || _account === '') return;
-    let token_string = await getBalanceOfCGV(_contract, _account);
-    $('#coin_icon').attr('data-bs-original-title', token_string + ' CGV').tooltip('show');
-}
-
-async function updateApprovalText(_contract, _account, _spender) {
-    if (_contract === '' || _account === '') return;
-    let allowance = await getAllowanceOfCGV(_contract, _account, _spender);
-    if (allowance > 0) $('#approve-text').text('전송');
-    else $('#approve-text').text('승인');
-}
-
-async function sendRequestAndDrawResponse(_contract, _account, _msg, _mode, _response_length, _temperature, _inference_price, _index) {
-    // 1. 서버에 요청 (TEST_SERVER)
-    console.log("---- 1. request message key to server")
-    let message_key = await requestMessageKey(_contract, _account, NFT_TOKEN_ID, _mode, _msg, _temperature, _response_length);
-    console.log("----> message_key = ", message_key);
-    
-    if (typeof message_key === 'undefined') {
-        console.log("message key undefined error!");
-        let reply_message = "서버 연결 에러입니다. 새로고침 해주세요.";
-        drawResponse(_index, reply_message)
-        return;
-    }
-
-    // 2. 서버의 응답을 넣어 컨트랙트에 요청
-    console.log("---- 2. request upload to contract")
-    _inference_price = await getInferencePrice(_contract, _account); // TODO 설정에서 반영해서 이 함수에 전달되도록
-    await requestUpload(_contract, _account, '0x' + message_key, _response_length, _inference_price);
-    console.log("---- request to contract finish")
-
-    // 3. 서버에 응답이 들어갈때까지 계속 체크
-    console.log("---- 3. request reply to server")
-    let delay = 1000; // interval 1sec request
-    setTimeout(async function request() {
-        let reply_message = await requestReply(message_key);
-        if (typeof reply_message.data === 'undefined') {
-            // please wait
-            console.log("----> please wait..", reply_message);
-        } else {
-            // success!
-            console.log("----> success!! reply_message = ", reply_message);
-            reply_message = reply_message.data.result;
-
-            // Draw answer here.
-            drawResponse(_index, reply_message)
-            return;
-        }
-        setTimeout(request, delay);
-    }, delay);
 }
 
 function drawResponse(_index, _reply_message) {
@@ -242,7 +242,7 @@ function drawResponse(_index, _reply_message) {
         </div>
     </section>
     `;
-    setLoadingStatus(false, false);
+    drawLoadingStatus(false, false);
     $(".message-list").append(message_html);
     $("#receive-message-" + _index).hover(
         function () {
