@@ -1,8 +1,15 @@
 /* Constants */
+// Page Types
 const PAGES = ['startPage', 'trainingPage', 'chattingPage', 'rankingPage', 'governancePage', 'walletPage'];
 const START_PAGE = 0;
 const CHATTING_PAGE = 2;
 const WALLET_PAGE = 5;
+
+// Message Types
+const WRITING_TYPE = 0;
+const CHATTING_TYPE = 1;
+const QNA_TYPE = 2;
+const THREE_LINE_TYPE = 3;
 
 /* Saved Values on Frontend */
 let current_page = 0;
@@ -120,6 +127,14 @@ async function sendMessageOnClick() {
         let mode = $('select#message_select').val();
         sendRequestAndDrawResponse(_contract, _account, message, mode, response_length, temperature, inference_price, msg_count);
     }
+}
+
+function updateFriendMessageOnClick() {
+    let message_type = $('select#message_select').val();
+    if (message_type == WRITING_TYPE) { $('#first-balloon').text("안녕! 작문을 위한 제시어를 말해줘."); }
+    else if (message_type == CHATTING_TYPE) { $('#first-balloon').text("안녕 난 enfp야"); }
+    else if (message_type == QNA_TYPE) { $('#first-balloon').text("안녕? 궁금한 것을 물어봐줘."); }
+    else if (message_type == THREE_LINE_TYPE) { $('#first-balloon').text("안녕! 삼행시를 위한 제시어를 말해줘."); }
 }
 
 /*

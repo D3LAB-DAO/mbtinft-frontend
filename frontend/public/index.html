@@ -402,7 +402,7 @@
           <!-- Balloon -->
           <div class="nes-balloon from-left chat-balloon left-balloon" data-bs-toggle="modal"
             data-bs-target="#like-modal">
-            <p>안녕 난 enfp야</p>
+            <p id="first-balloon">안녕! 작문을 위한 제시어를 말해줘.</p>
             <i class="nes-icon is-medium heart set-like"></i>
           </div>
         </section>
@@ -415,7 +415,7 @@
         <div class="input-group nes-field">
           <div class="chatting-element">
             <div class="nes-select" style="font-size:1.5rem; width:90%;">
-              <select required id="message_select">
+              <select required id="message_select" onChange="updateFriendMessageOnClick()">
                 <option value="0">작문</option>
                 <option value="1">채팅</option>
                 <option value="2">Q&A</option>
