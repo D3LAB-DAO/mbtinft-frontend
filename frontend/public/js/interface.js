@@ -137,7 +137,10 @@ async function requestMintOnClick() {
     console.log("checked_profile :", checked_profile_str, checked_profile_enum);
     if (typeof checked_profile_str !== 'undefined') {
         $('#mint_tooltip').attr('data-bs-original-title', '').tooltip('hide');
-        let response = await requestMint(_contract, _account, checked_profile_enum);
+        await requestMint(_contract, _account, checked_profile_enum);
+        await updateFriendList(_nft_contract, _account);
+        if (Object.keys(friends_dict).length > 0)
+            await updateFriendInfoOnClick(Object.keys(friends_dict)[0]);
     }
 }
 
@@ -234,7 +237,7 @@ async function getMbtiStringFromTokenID(_contract, _account, _tokenID) {
     let _decision = friends_dict[_tokenID]['decision'];
     let _relate = friends_dict[_tokenID]['relate'];
     let result_mbti = await getMbtiString(_contract, _account, _energy, _information, _decision, _relate);
-    return result_mbti;
+    return result_mbti.toLowerCase();
 }
 
 function updateFriendListOnClick() {
@@ -463,6 +466,7 @@ async function sendRequestAndDrawResponse(_contract, _account, _token_id, _msg, 
             reply_message = reply_message.data.result;
 
             // Draw answer here.
+            reply_message = reply_message.replace(/\n/gi, "<br/>");
             drawResponse(_index, reply_message)
             return;
         }
