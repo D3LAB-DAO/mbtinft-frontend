@@ -45,45 +45,6 @@
   }
 }
 
-
-/*
-@media screen and (max-width: 660px) {
-  .stat-profile-sm {
-    display: block;
-  }
-  .stat-profile-md {
-    display: none;
-  }
-  .stat-profile-lg {
-    display: none;
-  }
-}
-
-@media screen and (min-width: 660px) and (max-width: 1200px) {
-  .stat-profile-sm {
-    display: none;
-  }
-  .stat-profile-md {
-    display: block;
-  }
-  .stat-profile-lg {
-    display: none;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .stat-profile-sm {
-    display: none;
-  }
-  .stat-profile-md {
-    display: none;
-  }
-  .stat-profile-lg {
-    display: block;
-  }
-}
-*/
-
 :root {
   --main-color: #018281;
   --primary-color: #209cee;
@@ -120,6 +81,25 @@ hr {
   bottom: -25px;
   right: -30px;
   visibility: hidden;
+}
+
+.footer {
+  border: 0;
+  padding-top: 0;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: none;
+}
+
+.link-icon {
+  opacity: 0.9;
+}
+
+.link-icon:hover {
+  opacity: 0.4;
+  text-decoration: none;
 }
 
 /* Change balloon background color on hover */

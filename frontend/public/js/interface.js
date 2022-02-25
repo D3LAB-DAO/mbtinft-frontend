@@ -39,7 +39,7 @@ const SLOWEST = 4;
 
 /* Saved Values on Frontend */
 let current_page = 0;
-let try_page = 0;
+let try_page = -1;
 let msg_count = 0;
 
 let response_length = 128;
@@ -82,7 +82,8 @@ async function connectOnClick() {
         if (Object.keys(friends_dict).length > 0)
             await updateFriendInfoOnClick(Object.keys(friends_dict)[0]);
 
-        movePageOnClick(try_page);
+        if (try_page != -1)
+            movePageOnClick(try_page);
     }
     else {
         console.log("metamask connection failed!");
@@ -98,6 +99,7 @@ function movePageOnClick(targetIdx) {
     $('#' + PAGES[current_page]).hide();
     $('#' + PAGES[targetIdx]).show();
     current_page = targetIdx;
+    $("html, body").animate({ scrollTop: 0 }, "fast");
 }
 
 function openConfigOnClick() {
