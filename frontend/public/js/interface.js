@@ -149,7 +149,7 @@ async function sendRequestAndDrawResponse(_contract, _account, _msg, _mode, _res
     if (typeof message_key === 'undefined') {
         console.log("message key undefined error!");
         let reply_message = "서버 연결 에러입니다. 새로고침 해주세요.";
-        drawResponse(_index, reply_message)
+        drawResponse(_index, reply_message);
         return;
     }
 
@@ -163,7 +163,14 @@ async function sendRequestAndDrawResponse(_contract, _account, _msg, _mode, _res
     console.log("---- 3. request reply to server")
     let delay = 1000; // interval 1sec request
     setTimeout(async function request() {
-        let reply_message = await requestReply(message_key);
+        let reply_message = '';
+        try {
+            reply_message = await requestReply(message_key);
+        } catch {
+            reply_message = "서버 연결 에러입니다. 새로고침 해주세요.";
+            drawResponse(_index, reply_message)
+            return;
+        }
         if (typeof reply_message.data === 'undefined') {
             // please wait
             console.log("----> please wait..", reply_message);
