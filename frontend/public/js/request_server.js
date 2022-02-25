@@ -1,6 +1,7 @@
-const TEST_SERVER = 'http://147.46.115.21:33327/';
+const TEST_SERVER = 'http://23.21.19.102:33327/';
 
 async function upload_SERVER(_address, _tokenID, _nonce, _mode, _prompt, _temperature, _max_length) {
+    _prompt = _prompt.replace(/\"/gi, "\\\"");
     var querydata = '{"address": "' + _address + '", "tokenId" : ' + _tokenID + ', "nonce": ' + _nonce + ', "mode": ' + _mode + ', "prompt": "' + _prompt + '", "temperature": ' + _temperature + ', "max_length": ' + _max_length + '}';
     console.log("-- [request] upload_SERVER :", querydata);
     return new Promise((resolve, reject) => { 

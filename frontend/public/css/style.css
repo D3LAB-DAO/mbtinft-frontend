@@ -14,6 +14,39 @@
   unicode-range: U+AC00-D7A3; /* Korean */
 }
 
+@media screen and (max-width: 600px) {
+  .nav-logo {
+    width: 100%;
+  }
+  .nav-profile {
+    width: 55px;
+    padding: 0;
+    margin-left: 50px;
+  }
+  .nav-connect {
+    width: 200px;
+    padding: 0;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .nav-logo {
+    width: calc(100% - 275px);
+    padding:0;
+  }
+  .nav-profile {
+    width: 55px;
+    padding: 0;
+    margin-left: 0px;
+  }
+  .nav-connect {
+    width: 170px;
+    padding: 0;
+  }
+}
+
+
+/*
 @media screen and (max-width: 660px) {
   .stat-profile-sm {
     display: block;
@@ -49,6 +82,7 @@
     display: block;
   }
 }
+*/
 
 :root {
   --main-color: #018281;
@@ -177,16 +211,6 @@ img.grayscale {
   background-color: var(--main-color);
 }
 
-.nav-logo {
-  width: calc(100% - 275px);
-  padding:0;
-}
-
-.nav-profile {
-  width: 55px;
-  padding: 0;
-}
-
 .nav-profile:hover {
   opacity: 0.5;
 }
@@ -196,9 +220,8 @@ img.grayscale {
   padding: 0;
 }
 
-.nav-connect {
-  width: 170px;
-  padding: 0;
+#friend-list > img {
+  margin: 3px;
 }
 
 .friend-profile {
@@ -376,6 +399,14 @@ blockquote:hover {
 
 .nes-progress.is-reverse-error::-webkit-progress-bar {
   background-color: var(--error-color);
+}
+
+.nes-progress.is-reverse-primary::-webkit-progress-bar {
+  background-color: var(--primary-color);
+}
+
+.nes-progress.is-reverse-success::-webkit-progress-bar {
+  background-color: var(--success-color);
 }
 
 .nes-progress.is-reverse::-webkit-progress-value {

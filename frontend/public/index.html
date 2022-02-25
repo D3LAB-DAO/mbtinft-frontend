@@ -36,12 +36,12 @@
         </nav>
       </div>
       <div class="nav-profile" style="visibility: hidden;">
-        <img id="enfp-profile" type="button" src="../src/enfp-sm.png" data-bs-toggle="modal"
-          data-bs-target="#friend-modal" style="width:50px; height:50px; margin-top:16px;">
+        <img id="current-friend" type="button" src="../src/none-sm.png" data-bs-toggle="modal"
+          data-bs-target="#friend-modal" style="width:50px; height:50px; margin-top:16px;" onclick="updateFriendListOnClick()">
       </div>
       <div class="nav-coin">
         <div style="margin-top:13px;">
-          <i type="button" onclick="updateBalanceOfCGVOnClick()" id="coin_icon" class="nes-icon coin is-medium"
+          <i type="button" onclick="requestMintCGVOnClick()" onmouseover="updateBalanceOfCGVOnHover()" id="coin_icon" class="nes-icon coin is-medium"
             style="margin-bottom:13px; margin-right:13;" data-bs-toggle="tooltip" data-bs-placement="bottom"
             data-bs-original-title=""></i>
         </div>
@@ -102,14 +102,7 @@
           <h4># 칭구 목록</h4>
           <hr />
           <h5>함께할 친구를 선택해주세요.</h5>
-          <img type="button" class="friend-profile" src="../src/intp-sm.png" data-bs-dismiss="modal" aria-label="Close"
-            data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="#1">
-          <img type="button" class="friend-profile" src="../src/enfp-sm.png" data-bs-dismiss="modal" aria-label="Close"
-            data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="#2">
-          <img type="button" class="friend-profile" src="../src/neutral-sm.png" data-bs-dismiss="modal"
-            aria-label="Close" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="#3">
-          <img type="button" class="friend-profile" src="../src/neutral-sm.png" data-bs-dismiss="modal"
-            aria-label="Close" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="#4">
+          <div id="friend-list"></div>
         </div>
       </div>
     </div>
@@ -261,24 +254,10 @@
       <blockquote data-bs-toggle="collapse" data-bs-target="#myfriend" aria-controls="myfriend" aria-expanded="true"># 내
         칭구</blockquote>
       <div class="collapse show" id="myfriend">
-        <div class="stat-profile-sm" style="width:100%; padding-bottom: 15px;">
-          <div class="nes-balloon from-left" style="width: 300px;">
-            <p>안녕 난 enfp야</p>
-          </div>
-          <br />
-          <img src="../src/enfp-full-md-rounded.png">
-        </div>
-        <div class="stat-profile-md" style="width:100%; padding-bottom: 15px;">
-          <div class="nes-balloon from-left" style="width: 530px;">
-            <p>안녕 난 enfp야</p>
-          </div>
-          <br />
-          <img src="../src/enfp-full-lg-rounded.png">
-        </div>
         <div class="stat-profile-lg" style="width:100%; padding-bottom: 15px;">
-          <img src="../src/enfp.png" style="width:100px; height:100px;">
+          <img class="friend-info-image" src="../src/none.png" style="width:100px; height:100px;">
           <div class="nes-balloon from-left">
-            <p>안녕 난 enfp야</p>
+            <p id="friend-info-message"></p>
           </div>
         </div>
       </div>
@@ -289,48 +268,48 @@
           <div class="col-12 friend-stat">
             <blockquote class="sub-blockquote" data-bs-toggle="tooltip" data-bs-placement="right"
               data-bs-original-title="학습도는 데이터를 통해 칭구를 학습시켰을 때 올라가요!">학습도</blockquote>
-            <p>내 칭구는 <span class="educated-degree" style="text-decoration:underline">5763</span> 개의 데이터를 학습했어요!</p>
+            <p>내 칭구는 <span class="educated-degree" style="text-decoration:underline"></span> 개의 데이터를 학습했어요!</p>
           </div>
           <div class="col-12 col-xl-4 friend-stat">
             <blockquote class="sub-blockquote" data-bs-toggle="tooltip" data-bs-placement="right"
               data-bs-original-title="친밀도는 칭구와 대화를 할수록 올라가요!">친밀도</blockquote>
-            <i class="nes-icon is-large heart" data-bs-toggle="tooltip" data-bs-placement="bottom"
+            <i class="stat-love-icon nes-icon is-large heart" data-bs-toggle="tooltip" data-bs-placement="bottom"
               data-bs-original-title="10/10"></i>
-            <i class="nes-icon is-large heart" data-bs-toggle="tooltip" data-bs-placement="bottom"
+            <i class="stat-love-icon nes-icon is-large heart" data-bs-toggle="tooltip" data-bs-placement="bottom"
               data-bs-original-title="100/100"></i>
-            <i class="nes-icon is-large heart" data-bs-toggle="tooltip" data-bs-placement="bottom"
+            <i class="stat-love-icon nes-icon is-large heart" data-bs-toggle="tooltip" data-bs-placement="bottom"
               data-bs-original-title="1000/1000"></i>
-            <i class="nes-icon is-large is-half heart" data-bs-toggle="tooltip" data-bs-placement="bottom"
-              data-bs-original-title="3000/10000"></i>
-            <i class="nes-icon is-large is-transparent heart" data-bs-toggle="tooltip" data-bs-placement="bottom"
+            <i class="stat-love-icon nes-icon is-large heart" data-bs-toggle="tooltip" data-bs-placement="bottom"
+              data-bs-original-title="10000/10000"></i>
+            <i class="stat-love-icon nes-icon is-large heart" data-bs-toggle="tooltip" data-bs-placement="bottom"
               data-bs-original-title="10000~"></i>
           </div>
           <div class="col-12 col-xl-4 friend-stat">
             <blockquote class="sub-blockquote" data-bs-toggle="tooltip" data-bs-placement="right"
               data-bs-original-title="레어도는 추후 합성을 통해 올릴 수 있어요!">레어도</blockquote>
-            <i class="nes-icon is-large star" data-bs-toggle="tooltip" data-bs-placement="bottom"
+            <i class="stat-rarity-icon nes-icon is-large star" data-bs-toggle="tooltip" data-bs-placement="bottom"
               data-bs-original-title="normal"></i>
-            <i class="nes-icon is-large star" data-bs-toggle="tooltip" data-bs-placement="bottom"
+            <i class="stat-rarity-icon nes-icon is-large star" data-bs-toggle="tooltip" data-bs-placement="bottom"
               data-bs-original-title="rare"></i>
-            <i class="nes-icon is-large star is-transparent" data-bs-toggle="tooltip" data-bs-placement="bottom"
+            <i class="stat-rarity-icon nes-icon is-large star" data-bs-toggle="tooltip" data-bs-placement="bottom"
               data-bs-original-title="epic"></i>
-            <i class="nes-icon is-large star is-transparent" data-bs-toggle="tooltip" data-bs-placement="bottom"
+            <i class="stat-rarity-icon nes-icon is-large star" data-bs-toggle="tooltip" data-bs-placement="bottom"
               data-bs-original-title="unique"></i>
-            <i class="nes-icon is-large star is-transparent" data-bs-toggle="tooltip" data-bs-placement="bottom"
+            <i class="stat-rarity-icon nes-icon is-large star" data-bs-toggle="tooltip" data-bs-placement="bottom"
               data-bs-original-title="legendary"></i>
           </div>
           <div class="col-12 col-xl-4 friend-stat">
             <blockquote class="sub-blockquote" data-bs-toggle="tooltip" data-bs-placement="right"
               data-bs-original-title="인기도는 다른 칭구가 좋아요를 누르면 올라가요!">인기도</blockquote>
-            <i class="nes-icon is-large like" data-bs-toggle="tooltip" data-bs-placement="bottom"
+            <i class="stat-popularity-icon nes-icon is-large like" data-bs-toggle="tooltip" data-bs-placement="bottom"
               data-bs-original-title="10/10"></i>
-            <i class="nes-icon is-large like" data-bs-toggle="tooltip" data-bs-placement="bottom"
+            <i class="stat-popularity-icon nes-icon is-large like" data-bs-toggle="tooltip" data-bs-placement="bottom"
               data-bs-original-title="100/100"></i>
-            <i class="nes-icon is-large like" data-bs-toggle="tooltip" data-bs-placement="bottom"
+            <i class="stat-popularity-icon nes-icon is-large like" data-bs-toggle="tooltip" data-bs-placement="bottom"
               data-bs-original-title="1000/1000"></i>
-            <i class="nes-icon is-large like is-empty" data-bs-toggle="tooltip" data-bs-placement="bottom"
-              data-bs-original-title="1050/10000"></i>
-            <i class="nes-icon is-large like is-empty" data-bs-toggle="tooltip" data-bs-placement="bottom"
+            <i class="stat-popularity-icon nes-icon is-large like" data-bs-toggle="tooltip" data-bs-placement="bottom"
+              data-bs-original-title="10000/10000"></i>
+            <i class="stat-popularity-icon nes-icon is-large like" data-bs-toggle="tooltip" data-bs-placement="bottom"
               data-bs-original-title="10000~"></i>
           </div>
         </div>
@@ -338,25 +317,25 @@
       <blockquote data-bs-toggle="collapse" data-bs-target="#mymbti" aria-controls="mymbti" aria-expanded="true"># 성향
       </blockquote>
       <div class="collapse show" id="mymbti">
-        <p>내 칭구는 현재 ENFP 성향에 가까워요! <span class="remain-sp" style="text-decoration:underline">(SP: 0)</span></p>
+        <p>내 칭구는 현재 <span class="mbti-string"></span> 성향에 가까워요! <span class="remain-sp" style="text-decoration:underline"></span></p>
         <h5>• 외향형(E) / 내향형(I)</h5>
         <div style="width: 100%; position: relative;">
           <button type="button" class="nes-btn is-primary stat-button-left">
             <span class="stat-text">+</span>
           </button>
-          <progress class="nes-progress is-primary stat-bar" value="80" max="100" data-label="80%"
-            data-bs-toggle="modal" data-bs-target="#mymbti-modal">
-          </progress>
+          <progress id="energy-bar" class="nes-progress stat-bar" value="0" max="100" data-label=""
+          data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title=""></progress>
           <button type="button" class="nes-btn is-primary stat-button-right">
             <span class="stat-text">+</span>
           </button>
         </div>
-        <h5>• 직관형(N) / 감각형(S)</h5>
+        <h5>• 감각형(S) / 직관형(N)</h5>
         <div style="width: 100%; position: relative;">
           <button type="button" class="nes-btn is-success stat-button-left">
             <span class="stat-text">+</span>
           </button>
-          <progress class="nes-progress is-success stat-bar" value="70" max="100" data-label="70%"></progress>
+          <progress id="information-bar" class="nes-progress stat-bar" value="0" max="100" data-label=""
+          data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title=""></progress>
           <button type="button" class="nes-btn is-success stat-button-right">
             <span class="stat-text">+</span>
           </button>
@@ -366,8 +345,8 @@
           <button type="button" class="nes-btn is-warning stat-button-left">
             <span class="stat-text">+</span>
           </button>
-          <progress class="nes-progress is-reverse is-reverse-warning stat-bar" value="45" max="100"
-            data-label="55%"></progress>
+          <progress id="decision-bar" class="nes-progress stat-bar" value="0" max="100" data-label=""
+          data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title=""></progress>
           <button type="button" class="nes-btn is-warning stat-button-right">
             <span class="stat-text">+</span>
           </button>
@@ -377,45 +356,17 @@
           <button type="button" class="nes-btn is-error stat-button-left">
             <span class="stat-text">+</span>
           </button>
-          <progress class="nes-progress is-reverse is-reverse-error stat-bar" value="30" max="100"
-            data-label="70%"></progress>
+          <progress id="relate-bar" class="nes-progress stat-bar" value="0" max="100" data-label=""
+          data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title=""></progress>
           <button type="button" class="nes-btn is-error stat-button-right">
             <span class="stat-text">+</span>
           </button>
         </div>
-        <!-- Modal -->
-        <div class="modal fade" id="mymbti-modal" tabindex="-1" aria-labelledby="mymbtiModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <button type="button" class="nes-btn is-error modal-close" data-bs-dismiss="modal" aria-label="Close"
-                style="width:50px; height:50px; padding-bottom:20px; margin-bottom:20px;">
-                <div class="modal-close-text">X</div>
-              </button>
-              <div style="font-size:1rem;">
-                <h4># 에너지 방향, 주의초점</h4>
-                <hr />
-                외향형(Extraversion) 성향이 높아요!<br />
-                외향형 성향은 폭넓은 대인관계 유지, 사교적, 정열적, 활동적이라는 특징을 갖고 있어요.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <blockquote data-bs-toggle="collapse" data-bs-target="#mycollection" aria-controls="mycollection"
-        aria-expanded="true"># 콜렉션</blockquote>
-      <div class="collapse show" id="mycollection">
-        <i class="nes-icon trophy is-large" data-bs-toggle="tooltip" data-bs-placement="bottom"
-          data-bs-original-title="학습왕 1위 (2022.01.22)"></i>
-        <i class="nes-icon trophy is-medium" data-bs-toggle="tooltip" data-bs-placement="bottom"
-          data-bs-original-title="학습왕 3위 (2022.02.22)"></i>
-        <i class="nes-icon trophy is-medium" data-bs-toggle="tooltip" data-bs-placement="bottom"
-          data-bs-original-title="인기왕 3위 (2022.02.22)"></i>
-        <i class="nes-icon trophy is-medium" data-bs-toggle="tooltip" data-bs-placement="bottom"
-          data-bs-original-title="우정왕 3위 (2022.02.22)"></i>
       </div>
       <div style="padding-top:10px;">
         <center><button type="button" onclick="" class="nes-btn is-success"
-            style="font-size:1.5rem; width:200px;">✏️학습하기!</button></center>
+            style="font-size:1.5rem; width:200px;" data-bs-toggle="tooltip" data-bs-placement="bottom"
+            data-bs-original-title="현재 지원하지 않는 기능입니다.">✏️학습하기!</button></center>
       </div>
     </div>
   </div>
@@ -425,15 +376,6 @@
     <div class="nes-container bg-light with-title m-4">
       <p class="title" style="font-size:2rem;">💬 대화</p>
       <section class="message-list">
-        <section class="message -left">
-          <i><img src="../src/enfp.png" style="width:100px; height:100px;"></i>
-          <!-- Balloon -->
-          <div class="nes-balloon from-left chat-balloon left-balloon" data-bs-toggle="modal"
-            data-bs-target="#like-modal">
-            <p id="first-balloon">안녕! 작문을 위한 제시어를 말해줘.</p>
-            <i class="nes-icon is-medium heart set-like"></i>
-          </div>
-        </section>
       </section>
 
       <div style="padding-top: 30px;">
@@ -487,12 +429,11 @@
             <label for="inference_price_select">• Inference Price :</label>
             <div class="nes-select">
               <select required id="inference_price_select">
-                <option value="0">Faster</option>
-                <option value="1">Fast</option>
+                <option value="0">Fastest</option>
+                <option value="1">Faster</option>
                 <option value="2" selected>Average</option>
-                <option value="3">Slow</option>
-                <option value="4">Slower</option>
-                <option value="5">Custom</option>
+                <option value="3">Slower</option>
+                <option value="4">Slowest</option>
               </select>
             </div>
             <div style="text-align: center;">
