@@ -11,6 +11,25 @@ const CHATTING_TYPE = 1;
 const QNA_TYPE = 2;
 const THREE_LINE_TYPE = 3;
 
+// MBTI Types
+const ISFP = 0;
+const ESFP = 1;
+const INFP = 2;
+const ENFP = 3;
+const ISTP = 4;
+const ESTP = 5;
+const INTP = 6;
+const ENTP = 7;
+const ISFJ = 8;
+const ESFJ = 9;
+const INFJ = 10;
+const ENFJ = 11;
+const ISTJ = 12;
+const ESTJ = 13;
+const INTJ = 14;
+const ENTJ = 15;
+const NEUTRAL = 16;
+
 /* Saved Values on Frontend */
 let current_page = 0;
 let try_page = 0;
@@ -91,10 +110,11 @@ async function requestMintOnClick() {
     let _account = account;
     let _token_id = NFT_TOKEN_ID;
 
-    // todo : pass `checked_profile` to mint function
-    let checked_profile = $(':radio[name="profiles"]:checked').val();
-    console.log("checked_profile :", checked_profile);
-    if (typeof checked_profile !== 'undefined') {
+    // todo : pass `checked_profile_enum` to mint function
+    let checked_profile_str = $(':radio[name="profiles"]:checked').val();
+    let checked_profile_enum = getProfileTypeFromString(checked_profile_str);
+    console.log("checked_profile :", checked_profile_str, checked_profile_enum);
+    if (typeof checked_profile_str !== 'undefined') {
         $('#mint_tooltip').attr('data-bs-original-title', '').tooltip('hide');
         let response = await requestMint(_contract, _account, _token_id);
     }
@@ -135,6 +155,28 @@ function updateFriendMessageOnClick() {
     else if (message_type == CHATTING_TYPE) { $('#first-balloon').text("안녕 난 enfp야"); }
     else if (message_type == QNA_TYPE) { $('#first-balloon').text("안녕? 궁금한 것을 물어봐줘."); }
     else if (message_type == THREE_LINE_TYPE) { $('#first-balloon').text("안녕! 삼행시를 위한 제시어를 말해줘."); }
+}
+
+function getProfileTypeFromString(_checked_profile_str) {
+    switch(_checked_profile_str) {
+        case 'isfp': return ISFP;
+        case 'infp': return INFP;
+        case 'enfp': return ENFP;
+        case 'istp': return ISTP;
+        case 'estp': return ESTP;
+        case 'intp': return INTP;
+        case 'entp': return ENTP;
+        case 'isfj': return ISFJ;
+        case 'esfj': return ESFJ;
+        case 'infj': return INFJ;
+        case 'enfj': return ENFJ;
+        case 'istj': return ISTJ;
+        case 'estj': return ESTJ;
+        case 'intj': return INTJ;
+        case 'entj': return ENTJ;
+        case 'neutral': return NEUTRAL;
+      }
+    return -1;
 }
 
 /*
