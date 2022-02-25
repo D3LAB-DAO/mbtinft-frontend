@@ -4,6 +4,9 @@
 ![demo](./readme/demo.gif)
 
 ## References
+### Library
+* [jQuery](http://jquery.org/license/) `MIT license`
+* [web3.js](https://github.com/ChainSafe/web3.js) `LGPL-3.0`
 ### Framework
 * [Bootstrap 5](https://getbootstrap.com/docs/5.1/getting-started/introduction/) `MIT license`
 * [NES.css](https://nostalgic-css.github.io/NES.css/) `MIT license`
