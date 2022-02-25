@@ -402,7 +402,7 @@
               data-bs-toggle="modal" data-bs-target="#config-modal" onclick="openConfigOnClick()">⚙️</button>
           </div>
           <div class="chatting-element" style="text-align:right;">
-            <button type="button" class="btn nes-btn is-success" style="font-size:1.7rem; width:90%;"
+            <button type="button" id="send-message" class="btn nes-btn" style="font-size:1.7rem; width:90%;"
               onclick="sendMessageOnClick()"><span id="approve-text">로딩중..</span></button>
           </div>
         </div>
@@ -420,7 +420,7 @@
           <div style="font-size:1rem;">
             <h4># 환경설정</h4>
             <hr />
-            <label for="response_length_field">• Response Length :</label>
+            <label for="response_length_field">• Max Length :</label>
             <input type="number" id="response_length_field" class="form-control nes-input" min="1" max="1024"
               value="128" placeholder="128" style="margin-bottom:10px;">
             <label for="temperature_field">• Temperature :</label>

@@ -140,7 +140,7 @@ async function requestMintOnClick() {
     if (typeof checked_profile_str !== 'undefined') {
         $('#mint_tooltip').attr('data-bs-original-title', '').tooltip('hide');
         await requestMint(_contract, _account, checked_profile_enum);
-        await updateFriendList(_nft_contract, _account);
+        await updateFriendList(_contract, _account);
         if (Object.keys(friends_dict).length > 0)
             await updateFriendInfoOnClick(Object.keys(friends_dict)[0]);
     }
@@ -406,8 +406,16 @@ async function updateBalanceOfCGV(_contract, _account) {
 async function updateApprovalText(_contract, _account, _spender) {
     if (_contract === '' || _account === '') return;
     let allowance = await getAllowanceOfCGV(_contract, _account, _spender);
-    if (allowance > 0) $('#approve-text').text('전송');
-    else $('#approve-text').text('승인');
+    if (allowance > 0) {
+        $('button#send-message').removeClass('is-error');
+        $('button#send-message').addClass('is-success');
+        $('#approve-text').text('전송');
+    }
+    else {
+        $('button#send-message').removeClass('is-success');
+        $('button#send-message').addClass('is-error');
+        $('#approve-text').text('승인');
+    }
 }
 
 async function updateFriendList(_contract, _account) {
