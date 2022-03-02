@@ -149,7 +149,7 @@ async function requestMintCGV(_contract, _account, _amount) {
   let response = await mint_CGV(_contract, _account, _amount);
 }
 
-async function requestTeach(_contract, _account, _token_id, _energy, _information, _decision, _relate) {
+async function requestTeach(_contract, _account, _token_id, _E, _I, _S, _N, _T, _F, _J, _P) {
   if (_contract === '' || _account === '') return;
 
   // before teach
@@ -158,7 +158,7 @@ async function requestTeach(_contract, _account, _token_id, _energy, _informatio
   $('span#teach').text('업데이트중..');
 
   // request teach
-  await teach_CHINGGU(_contract, _account, _token_id, _energy, _information, _decision, _relate);
+  await teach_CHINGGU(_contract, _account, _token_id, _E, _I, _S, _N, _T, _F, _J, _P);
 
   // after teach
   await updateFriendInfoOnClick(_token_id);

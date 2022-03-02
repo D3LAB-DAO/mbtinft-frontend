@@ -1,5 +1,5 @@
 /* MBTINFT (main) */
-const CONTRACT_MBTINFT_ADDR = '0x08916459d8C987dfd946c282D6485f8881253871';
+const CONTRACT_MBTINFT_ADDR = '0xD66D074037EB5A9ea54324f93BF021BeC9234162';
 const CONTRACT_MBTINFT_ABI = [
   {
     "inputs": [
@@ -260,6 +260,45 @@ const CONTRACT_MBTINFT_ABI = [
       }
     ],
     "name": "transferOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "cgv_",
+        "type": "address"
+      }
+    ],
+    "name": "setCgv",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "chinggu_",
+        "type": "address"
+      }
+    ],
+    "name": "setChinggu",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "inferencer_",
+        "type": "address"
+      }
+    ],
+    "name": "setInferencer",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -559,6 +598,40 @@ const CONTRACT_MBTINFT_ABI = [
   {
     "inputs": [
       {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "maxLength",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "inferencePrice",
+        "type": "uint256"
+      }
+    ],
+    "name": "upload",
+    "outputs": [
+      {
+        "internalType": "int128",
+        "name": "id",
+        "type": "int128"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
         "internalType": "int128",
         "name": "id",
         "type": "int128"
@@ -648,22 +721,42 @@ const CONTRACT_MBTINFT_ABI = [
       },
       {
         "internalType": "uint64",
-        "name": "energy",
+        "name": "E",
         "type": "uint64"
       },
       {
         "internalType": "uint64",
-        "name": "information",
+        "name": "I",
         "type": "uint64"
       },
       {
         "internalType": "uint64",
-        "name": "decision",
+        "name": "S",
         "type": "uint64"
       },
       {
         "internalType": "uint64",
-        "name": "relate",
+        "name": "N",
+        "type": "uint64"
+      },
+      {
+        "internalType": "uint64",
+        "name": "T",
+        "type": "uint64"
+      },
+      {
+        "internalType": "uint64",
+        "name": "F",
+        "type": "uint64"
+      },
+      {
+        "internalType": "uint64",
+        "name": "J",
+        "type": "uint64"
+      },
+      {
+        "internalType": "uint64",
+        "name": "P",
         "type": "uint64"
       }
     ],

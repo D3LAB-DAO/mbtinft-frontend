@@ -1,5 +1,5 @@
 /* CHINGGU (ERC721) */
-const CONTRACT_CHINGGU_ADDR = '0x2b111ca05b6E49f7A5bcb65E1F8195D615E61F51';
+const CONTRACT_CHINGGU_ADDR = '0x72350B6DeE447033aC159000A4951121737315B3';
 const CONTRACT_CHINGGU_ABI = [
   {
     "inputs": [],
@@ -598,22 +598,42 @@ const CONTRACT_CHINGGU_ABI = [
       },
       {
         "internalType": "uint64",
-        "name": "energy",
+        "name": "E",
         "type": "uint64"
       },
       {
         "internalType": "uint64",
-        "name": "information",
+        "name": "I",
         "type": "uint64"
       },
       {
         "internalType": "uint64",
-        "name": "decision",
+        "name": "S",
         "type": "uint64"
       },
       {
         "internalType": "uint64",
-        "name": "relate",
+        "name": "N",
+        "type": "uint64"
+      },
+      {
+        "internalType": "uint64",
+        "name": "T",
+        "type": "uint64"
+      },
+      {
+        "internalType": "uint64",
+        "name": "F",
+        "type": "uint64"
+      },
+      {
+        "internalType": "uint64",
+        "name": "J",
+        "type": "uint64"
+      },
+      {
+        "internalType": "uint64",
+        "name": "P",
         "type": "uint64"
       }
     ],

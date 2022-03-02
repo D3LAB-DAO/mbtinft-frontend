@@ -97,7 +97,7 @@ async function connectOnClick() {
         let _spender = CONTRACT_MBTINFT_ADDR;
         await updateBalanceOfCGV(_token_contract, _account);
         await updateApprovalText(_token_contract, _account, _spender);
-        await updateFriendList(_nft_contract, _account);
+        await updateFriendList(_nft_contract, _account, false);
         if (Object.keys(friends_dict).length > 0)
             await updateFriendInfoOnClick(Object.keys(friends_dict)[0]);
 
@@ -169,7 +169,7 @@ async function requestMintOnClick() {
     if (typeof checked_profile_str !== 'undefined') {
         $('#mint_tooltip').attr('data-bs-original-title', '').tooltip('hide');
         await requestMint(_contract, _account, checked_profile_enum);
-        await updateFriendList(_contract, _account);
+        await updateFriendList(_contract, _account, false);
         if (Object.keys(friends_dict).length > 0)
             await updateFriendInfoOnClick(Object.keys(friends_dict)[0]);
     }
@@ -179,12 +179,16 @@ async function requestTeachOnClick() {
     let _contract = contract_CHINGGU;
     let _account = account;
     let _token_id = tokenID;
-    let _energy = stat_updated[E_STAT] - stat_updated[I_STAT];
-    let _information = stat_updated[S_STAT] - stat_updated[N_STAT];
-    let _decision = stat_updated[T_STAT] - stat_updated[F_STAT];
-    let _relate = stat_updated[J_STAT] - stat_updated[P_STAT];
+    let _E = stat_updated[E_STAT];
+    let _I = stat_updated[I_STAT];
+    let _S = stat_updated[S_STAT];
+    let _N = stat_updated[N_STAT];
+    let _T = stat_updated[T_STAT];
+    let _F = stat_updated[F_STAT];
+    let _J = stat_updated[J_STAT];
+    let _P = stat_updated[P_STAT];
 
-    await requestTeach(_contract, _account, _token_id, _energy, _information, _decision, _relate);
+    await requestTeach(_contract, _account, _token_id, _E, _I, _S, _N, _T, _F, _J, _P);
 }
 
 async function sendMessageOnClick() {
@@ -420,13 +424,19 @@ async function getMbtiStringFromTokenID(_contract, _account, _tokenID) {
 function updateFriendListOnClick() {
     let _nft_contract = contract_CHINGGU;
     let _account = account;
-    updateFriendList(_nft_contract, _account);
+    updateFriendList(_nft_contract, _account, false);
 }
 
 async function refreshFriendInfoOnClick() {
     let _tokenID = tokenID;
     if (_tokenID === '') return;
     await updateFriendInfoOnClick(_tokenID);
+}
+
+async function refreshFriendListOnClick() {
+    let _nft_contract = contract_CHINGGU;
+    let _account = account;
+    updateFriendList(_nft_contract, _account, true);
 }
 
 async function updateFriendInfoOnClick(_tokenID) {
@@ -604,7 +614,7 @@ async function updateApprovalText(_contract, _account, _spender) {
     }
 }
 
-async function updateFriendList(_contract, _account) {
+async function updateFriendList(_contract, _account, _refresh) {
     if (_contract === '' || _account === '') return;
     let friend_list = await getFriendtokenIDList(_contract, _account);
     for (let i = 0; i < friend_list.length; i++) {
@@ -612,6 +622,9 @@ async function updateFriendList(_contract, _account) {
         if (_tokenID in friends_dict) delete friends_dict[_tokenID];
         friends_dict[_tokenID] = await getFriendProperties(_contract, _account, _tokenID);
         let mbti_string = await getMbtiStringFromTokenID(_contract, _account, _tokenID);
+        if (_refresh) {
+            if ($('#'+friend_list[i]).length > 0) $('#'+friend_list[i]).remove();
+        }
         if ($('#'+friend_list[i]).length == 0){
             let friend_profile_html = `<img type="button" id=` + _tokenID + ` class="friend-profile" src="../src/` + mbti_string + `-sm.png" onclick="updateFriendInfoOnClick(this.id)" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="` + mbti_string + `(ID#` + _tokenID + `)">`
             $("div#friend-list").append(friend_profile_html);
