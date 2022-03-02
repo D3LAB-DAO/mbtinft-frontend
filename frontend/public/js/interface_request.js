@@ -70,6 +70,27 @@ async function getFriendtokenIDList(_contract, _account) {
 async function getFriendProperties(_contract, _account, _token_id) {
   if (_contract === '' || _account === '') return;
   let properties = await properties_CHINGGU(_contract, _account, _token_id);
+
+  // parse to int
+  properties['amount'] = parseInt(properties['amount']);
+  properties['decision'] = parseInt(properties['decision']);
+  properties['energy'] = parseInt(properties['energy']);
+  properties['information'] = parseInt(properties['information']);
+  properties['love'] = parseInt(properties['love']);
+  properties['popularity'] = parseInt(properties['popularity']);
+  properties['rarity'] = parseInt(properties['rarity']);
+  properties['relate'] = parseInt(properties['relate']);
+  properties['sp'] = parseInt(properties['sp']);
+
+  properties[0] = parseInt(properties[0]);
+  properties[1] = parseInt(properties[1]);
+  properties[2] = parseInt(properties[2]);
+  properties[3] = parseInt(properties[3]);
+  properties[4] = parseInt(properties[4]);
+  properties[5] = parseInt(properties[5]);
+  properties[6] = parseInt(properties[6]);
+  properties[7] = parseInt(properties[7]);
+  properties[8] = parseInt(properties[8]);
   return properties;
 }
 
@@ -126,4 +147,22 @@ async function requestReply(_key) {
 async function requestMintCGV(_contract, _account, _amount) {
   if (_contract === '' || _account === '') return;
   let response = await mint_CGV(_contract, _account, _amount);
+}
+
+async function requestTeach(_contract, _account, _token_id, _energy, _information, _decision, _relate) {
+  if (_contract === '' || _account === '') return;
+
+  // before teach
+  $('button#teach').removeClass('is-success');
+  $('button#teach').addClass('is-error');
+  $('span#teach').text('업데이트중..');
+
+  // request teach
+  await teach_CHINGGU(_contract, _account, _token_id, _energy, _information, _decision, _relate);
+
+  // after teach
+  await updateFriendInfoOnClick(_token_id);
+  $('button#teach').removeClass('is-error');
+  $('button#teach').addClass('is-success');
+  $('span#teach').text('💸업데이트');
 }

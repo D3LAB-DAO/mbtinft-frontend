@@ -62,6 +62,13 @@ async function getMBTI_CHINGGU(_contract, _account, _energy, _information, _deci
     return response;
 }
 
+async function teach_CHINGGU(_contract, _account, _token_id, _energy, _information, _decision, _relate) {
+    console.log("-- [request] teach_CHINGGU");
+    let response = await _contract.methods.teach(_account, _token_id, _energy, _information, _decision, _relate).send({ from: _account });
+    console.log("-- [response] teach_CHINGGU :", response);
+    return response;
+}
+
 
 /*
   MBTINFT

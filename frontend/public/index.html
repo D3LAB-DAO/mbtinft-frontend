@@ -250,7 +250,7 @@
   <!-- Training -->
   <div id="trainingPage" style="display:none; padding-bottom:20px;">
     <div class="nes-container bg-light with-title m-4">
-      <p class="title" style="font-size:2rem;">💓 칭구</p>
+      <p class="title" style="font-size:2rem;">💓 칭구<img type="button" onclick="refreshFriendInfoOnClick()" id="refresh" src="../src/refresh_icon.png" style="margin-bottom:5px; margin-left:10px; margin-right:5px;"/></p>
       <blockquote data-bs-toggle="collapse" data-bs-target="#myfriend" aria-controls="myfriend" aria-expanded="true"># 내
         칭구</blockquote>
       <div class="collapse show" id="myfriend">
@@ -320,52 +320,52 @@
         <p>내 칭구는 현재 <span class="mbti-string"></span> 성향에 가까워요! <span class="remain-sp" style="text-decoration:underline"></span></p>
         <h5>• 외향형(E) / 내향형(I)</h5>
         <div style="width: 100%; position: relative;">
-          <button type="button" class="nes-btn is-primary stat-button-left">
+          <button type="button" class="nes-btn is-primary stat-button-left" onclick="updateStatBarOnClick(E_STAT)">
             <span class="stat-text">+</span>
           </button>
           <progress id="energy-bar" class="nes-progress stat-bar" value="0" max="100" data-label=""
           data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title=""></progress>
-          <button type="button" class="nes-btn is-primary stat-button-right">
+          <button type="button" class="nes-btn is-primary stat-button-right" onclick="updateStatBarOnClick(I_STAT)">
             <span class="stat-text">+</span>
           </button>
         </div>
         <h5>• 감각형(S) / 직관형(N)</h5>
         <div style="width: 100%; position: relative;">
-          <button type="button" class="nes-btn is-success stat-button-left">
+          <button type="button" class="nes-btn is-success stat-button-left"onclick="updateStatBarOnClick(S_STAT)">
             <span class="stat-text">+</span>
           </button>
           <progress id="information-bar" class="nes-progress stat-bar" value="0" max="100" data-label=""
           data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title=""></progress>
-          <button type="button" class="nes-btn is-success stat-button-right">
+          <button type="button" class="nes-btn is-success stat-button-right"onclick="updateStatBarOnClick(N_STAT)">
             <span class="stat-text">+</span>
           </button>
         </div>
         <h5>• 사고형(T) / 감정형(F)</h5>
         <div style="width: 100%; position: relative;">
-          <button type="button" class="nes-btn is-warning stat-button-left">
+          <button type="button" class="nes-btn is-warning stat-button-left"onclick="updateStatBarOnClick(T_STAT)">
             <span class="stat-text">+</span>
           </button>
           <progress id="decision-bar" class="nes-progress stat-bar" value="0" max="100" data-label=""
           data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title=""></progress>
-          <button type="button" class="nes-btn is-warning stat-button-right">
+          <button type="button" class="nes-btn is-warning stat-button-right"onclick="updateStatBarOnClick(F_STAT)">
             <span class="stat-text">+</span>
           </button>
         </div>
         <h5>• 판단형(J) / 인지형(P)</h5>
         <div style="width: 100%; position: relative;">
-          <button type="button" class="nes-btn is-error stat-button-left">
+          <button type="button" class="nes-btn is-error stat-button-left"onclick="updateStatBarOnClick(J_STAT)">
             <span class="stat-text">+</span>
           </button>
           <progress id="relate-bar" class="nes-progress stat-bar" value="0" max="100" data-label=""
           data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title=""></progress>
-          <button type="button" class="nes-btn is-error stat-button-right">
+          <button type="button" class="nes-btn is-error stat-button-right"onclick="updateStatBarOnClick(P_STAT)">
             <span class="stat-text">+</span>
           </button>
         </div>
         <div style="padding-top:10px;">
-          <center><button type="button" onclick="" class="nes-btn is-success"
+          <center><button type="button" id="teach" onclick="requestTeachOnClick()" class="nes-btn is-success"
               style="font-size:1.5rem; width:200px;" data-bs-toggle="tooltip" data-bs-placement="bottom"
-              data-bs-original-title="변경한 스탯을 확정합니다.">💸업데이트</button></center>
+              data-bs-original-title="변경한 스탯을 확정합니다."><span id="teach">💸업데이트</span></button></center>
         </div>
       </div>
     </div>

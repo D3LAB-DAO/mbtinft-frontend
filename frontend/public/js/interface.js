@@ -2,6 +2,7 @@
 // Page Types
 const PAGES = ['startPage', 'trainingPage', 'chattingPage', 'rankingPage', 'governancePage', 'walletPage'];
 const START_PAGE = 0;
+const TRAINING_PAGE = 1
 const CHATTING_PAGE = 2;
 const WALLET_PAGE = 5;
 
@@ -30,6 +31,22 @@ const ENFP = 14;
 const INFP = 15;
 const NEUTRAL = 16;
 
+// Stats
+const E_STAT = 0;
+const I_STAT = 1;
+const S_STAT = 2;
+const N_STAT = 3;
+const T_STAT = 4;
+const F_STAT = 5;
+const J_STAT = 6;
+const P_STAT = 7;
+
+// Dict Index from contract
+const DICT_ENERGY_INDEX = 4;
+const DICT_INFORMATION_INDEX = 5;
+const DICT_DECISION_INDEX = 6;
+const DICT_RELATE_INDEX = 7;
+
 // Inference Prices
 const FASTEST = 0;
 const FASTER = 1;
@@ -48,6 +65,8 @@ let inference_price = 2;
 
 let friends_dict = [];
 let friend_mbti_string = '';
+
+let stat_updated = [0, 0, 0, 0, 0, 0, 0, 0];
 
 let tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
 let tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
@@ -96,10 +115,20 @@ function movePageOnClick(targetIdx) {
         try_page = targetIdx;
         targetIdx = WALLET_PAGE;
     }
+
+    updatePageOnClick(targetIdx);
     $('#' + PAGES[current_page]).hide();
     $('#' + PAGES[targetIdx]).show();
     current_page = targetIdx;
     $("html, body").animate({ scrollTop: 0 }, "fast");
+}
+
+function updatePageOnClick(targetIdx) {
+    switch(targetIdx) {
+        case TRAINING_PAGE:
+            // redraw , reset stat_updated
+            break;
+    }
 }
 
 function openConfigOnClick() {
@@ -146,6 +175,18 @@ async function requestMintOnClick() {
     }
 }
 
+async function requestTeachOnClick() {
+    let _contract = contract_CHINGGU;
+    let _account = account;
+    let _token_id = tokenID;
+    let _energy = stat_updated[E_STAT] - stat_updated[I_STAT];
+    let _information = stat_updated[S_STAT] - stat_updated[N_STAT];
+    let _decision = stat_updated[T_STAT] - stat_updated[F_STAT];
+    let _relate = stat_updated[J_STAT] - stat_updated[P_STAT];
+
+    await requestTeach(_contract, _account, _token_id, _energy, _information, _decision, _relate);
+}
+
 async function sendMessageOnClick() {
     let _token_contract = contract_CGV;
     let _contract = contract_MBTINFT;
@@ -186,6 +227,75 @@ function updateFriendMessageOnClick() {
     }
     if (msg_count == 0) { $('#first-balloon').text(reply_message); }
     else { drawResponse(msg_count, reply_message); }
+}
+
+function updateStatBarOnClick(_stat_type) {
+    let _tokenID = tokenID;
+
+    // check load dict
+    if ((!(_tokenID in friends_dict) || !('energy' in friends_dict[_tokenID]))) {
+        console.log("NOT LOADED YET!");
+        return;
+    }
+
+    // check remain sp
+    let _sp = friends_dict[_tokenID]['sp'];
+    let stat_updated_sum = stat_updated.reduce((partialSum, a) => partialSum + a, 0);
+    if (_sp - stat_updated_sum <= 0) return;
+    
+    // update stat_updated
+    if (stat_updated[getCorrStatType(_stat_type)] > 0) {
+        stat_updated[getCorrStatType(_stat_type)]--;
+        stat_updated_sum--;
+    }
+    else {
+        if (friends_dict[_tokenID][getDictIndexFromStatType(_stat_type)] + stat_updated[_stat_type] >= 100) return;
+        else {
+            stat_updated[_stat_type]++;
+            stat_updated_sum++;
+        }
+    }
+
+    // update bars
+    updateSpecificStatBar(getProgressBarFromStatType(_stat_type), friends_dict[_tokenID][getDictIndexFromStatType(_stat_type)], getMajorStatType(_stat_type), getMinorStatType(_stat_type));
+    
+    // update SP text
+    let updated_remain_sp = _sp - stat_updated_sum;
+    $('.remain-sp').text('(SP: ' + updated_remain_sp + ')');
+}
+
+function updateSpecificStatBar(progress_bar_obj, _stat, MAJOR_STAT, MINOR_STAT) {
+    let _value = 0;
+    if (_stat >= 50) { // e.g. E
+        _value = _stat;
+        if ( stat_updated[MAJOR_STAT] > 0 ) {
+            progress_bar_obj.attr('data-label', _value + '(+' + stat_updated[MAJOR_STAT] + ')%');
+            progress_bar_obj.attr('value', _stat + stat_updated[MAJOR_STAT]);
+        }
+        else if ( stat_updated[MINOR_STAT] > 0 ) {
+            progress_bar_obj.attr('data-label', _value + '(-' + stat_updated[MINOR_STAT] + ')%');
+            progress_bar_obj.attr('value', _stat - stat_updated[MINOR_STAT]);
+        }
+        else {
+            progress_bar_obj.attr('data-label', _value + '(+0)%');
+            progress_bar_obj.attr('value', _stat);
+        }
+    }
+    else if (_stat < 50) { // e.g. I
+        _value = 100 - _stat;
+        if ( stat_updated[MINOR_STAT] > 0 ) {
+            progress_bar_obj.attr('data-label', _value + '(+' + stat_updated[MINOR_STAT] + ')%');
+            progress_bar_obj.attr('value', _stat - stat_updated[MINOR_STAT]);
+        }
+        else if ( stat_updated[MAJOR_STAT] > 0 ) {
+           progress_bar_obj.attr('data-label', _value + '(-' + stat_updated[MAJOR_STAT] + ')%');
+           progress_bar_obj.attr('value', _stat + stat_updated[MAJOR_STAT]);
+        }
+        else {
+            progress_bar_obj.attr('data-label', _value + '(+0)%');
+            progress_bar_obj.attr('value', _stat);
+        }
+    }
 }
 
 function getMbtiTypeFromString(_checked_profile_str) {
@@ -233,6 +343,71 @@ function getMbtiStringFromType(_checked_profile_type) {
     return '';
 }
 
+function getCorrStatType(_stat_type) {
+    switch(_stat_type) {
+        case E_STAT: return I_STAT;
+        case I_STAT: return E_STAT;
+        case S_STAT: return N_STAT;
+        case N_STAT: return S_STAT;
+        case T_STAT: return F_STAT;
+        case F_STAT: return T_STAT;
+        case J_STAT: return P_STAT;
+        case P_STAT: return J_STAT;
+    }
+}
+
+function getMajorStatType(_stat_type) {
+    switch(_stat_type) {
+        case E_STAT: return E_STAT;
+        case I_STAT: return E_STAT;
+        case S_STAT: return S_STAT;
+        case N_STAT: return S_STAT;
+        case T_STAT: return T_STAT;
+        case F_STAT: return T_STAT;
+        case J_STAT: return J_STAT;
+        case P_STAT: return J_STAT;
+    }
+}
+
+function getMinorStatType(_stat_type) {
+    switch(_stat_type) {
+        case E_STAT: return I_STAT;
+        case I_STAT: return I_STAT;
+        case S_STAT: return N_STAT;
+        case N_STAT: return N_STAT;
+        case T_STAT: return F_STAT;
+        case F_STAT: return F_STAT;
+        case J_STAT: return P_STAT;
+        case P_STAT: return P_STAT;
+    }
+}
+
+function getDictIndexFromStatType(_stat_type) {
+    switch(_stat_type) {
+        case E_STAT: return DICT_ENERGY_INDEX;
+        case I_STAT: return DICT_ENERGY_INDEX;
+        case S_STAT: return DICT_INFORMATION_INDEX;
+        case N_STAT: return DICT_INFORMATION_INDEX;
+        case T_STAT: return DICT_DECISION_INDEX;
+        case F_STAT: return DICT_DECISION_INDEX;
+        case J_STAT: return DICT_RELATE_INDEX;
+        case P_STAT: return DICT_RELATE_INDEX;
+    }
+}
+
+function getProgressBarFromStatType(_stat_type) {
+    switch(_stat_type) {
+        case E_STAT: return $('#energy-bar');
+        case I_STAT: return $('#energy-bar');
+        case S_STAT: return $('#information-bar');
+        case N_STAT: return $('#information-bar');
+        case T_STAT: return $('#decision-bar');
+        case F_STAT: return $('#decision-bar');
+        case J_STAT: return $('#relate-bar');
+        case P_STAT: return $('#relate-bar');
+    }
+}
+
 async function getMbtiStringFromTokenID(_contract, _account, _tokenID) {
     let _energy = friends_dict[_tokenID]['energy'];
     let _information = friends_dict[_tokenID]['information'];
@@ -248,11 +423,18 @@ function updateFriendListOnClick() {
     updateFriendList(_nft_contract, _account);
 }
 
+async function refreshFriendInfoOnClick() {
+    let _tokenID = tokenID;
+    if (_tokenID === '') return;
+    await updateFriendInfoOnClick(_tokenID);
+}
+
 async function updateFriendInfoOnClick(_tokenID) {
     let _nft_contract = contract_CHINGGU;
     let _account = account;
     tokenID = _tokenID;
     
+    friends_dict[_tokenID] = await getFriendProperties(_nft_contract, _account, _tokenID);
     friend_mbti_string = await getMbtiStringFromTokenID(_nft_contract, _account, _tokenID);
     let _amount = friends_dict[_tokenID]['amount'];
     let _love = friends_dict[_tokenID]['love'];
@@ -312,14 +494,15 @@ async function updateFriendInfoOnClick(_tokenID) {
         $('#energy-bar').addClass('is-primary'); // E
         _energy_value = _energy;
         _energy_tooltip = 'E(' + _energy_value + '%)';
+        $('#energy-bar').attr('data-label', _energy_value + '%');
     }
     else if (_energy < 50) {
         $('#energy-bar').addClass('is-reverse is-reverse-primary'); // I
         _energy_value = 100 - _energy;
         _energy_tooltip = 'I(' + _energy_value + '%)';
+        $('#energy-bar').attr('data-label', _energy_value + '%');
     }
     $('#energy-bar').attr('value', _energy);
-    $('#energy-bar').attr('data-label', _energy_value + '%');
     $('#energy-bar').attr('data-bs-original-title', _energy_tooltip);
 
     $('#information-bar').removeClass('is-reverse is-reverse-success is-success');
@@ -375,6 +558,9 @@ async function updateFriendInfoOnClick(_tokenID) {
 
     // update chattings
     updateFriendChattingPage(_tokenID);
+
+    // reset stat_updated
+    stat_updated = [0, 0, 0, 0, 0, 0, 0, 0];
 }
 
 async function updateFriendChattingPage(_tokenID) {
