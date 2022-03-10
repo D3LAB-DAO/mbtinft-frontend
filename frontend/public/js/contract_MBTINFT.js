@@ -598,40 +598,6 @@ const CONTRACT_MBTINFT_ABI = [
   {
     "inputs": [
       {
-        "internalType": "address",
-        "name": "account",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "tokenId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "maxLength",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "inferencePrice",
-        "type": "uint256"
-      }
-    ],
-    "name": "upload",
-    "outputs": [
-      {
-        "internalType": "int128",
-        "name": "id",
-        "type": "int128"
-      }
-    ],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
         "internalType": "int128",
         "name": "id",
         "type": "int128"
